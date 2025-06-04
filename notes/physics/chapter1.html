@@ -1,129 +1,100 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Basic physics</title>
-  <link rel="stylesheet" href="../../css/style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Physics</title>
+  <link rel="stylesheet" href="../../css/style.css" />
   <link rel="stylesheet" href="../../css/katex.min.css" />
   <script defer src="../../js/katex.min.js"></script>
-  <script defer src="../../js/auto-render.min.js" 
-        onload="renderMathInElement(document.body, {
-          delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '\\[', right: '\\]', display: true},
-            {left: '$', right: '$', display: false},
-            {left: '\\(', right: '\\)', display: false}
-          ]
-        });">
+  <script defer src="../../js/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '\\[', right: '\\]', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false}
+      ]
+    });">
   </script>
 </head>
 
 <body>
-  <h1>Chapter 1: Measurement</h1>
-  <p>Physics is based on measurement of physical quantities.
-  Certain physical quantities have been chosen as base quantities
-  (such as length, time, and mass); 
-  each has been defined in terms of a standard and given a 
-  unit of measure (such as meter, second, and kilogram).
-  Other physical quantities are defined in terms of the 
-  base quantities and their standards and units.
-  </p>
+  <main>
+    <header>
+      <h1><a href="introduction.html"> <</a> Chapter 1: Measurement</h1>
+    </header>
 
-  <h2 id="Topic1">Length</h2>
-  <p>Length is measured in meters ( \(m\) ).
-  The meter is the length of the path traveled by light in a vacuum
-  during a time interval of 1/299 792 458 of a second.
-  This time interval was chosen so that the speed of light <i>c</i> is exactly
-  <i>c</i> = 299 792 458 m.s<sup>-1</sup>.
-  </p>
+    <p>
+      Physics is based on measurement of physical quantities. Certain physical quantities have been chosen as base quantities (such as length, time, and mass); each has been defined in terms of a standard and given a unit of measure (such as meter, second, and kilogram). Other physical quantities are defined in terms of the base quantities and their standards and units.
+    </p>
 
-  <h2 id="Topic2">Time</h2>
-  <p>Time is measured in seconds ( \(s\) ). The second is defined in terms
-  of the oscillations of light emitted by an atomic (cesium-133) source.
-  </p>
+    <section id="Topic1">
+      <h2>Length</h2>
+      <p>
+        Length is measured in meters (<abbr title="meter">\(m\)</abbr>). The meter is the length of the path traveled by light in a vacuum during a time interval of 1/299&nbsp;792&nbsp;458 of a second. This time interval was chosen so that the speed of light <i>c</i> is exactly <i>c</i> = 299&nbsp;792&nbsp;458 m·s<sup>−1</sup>.
+      </p>
+    </section>
 
-  <h2 id="Topic3">Mass</h2>
-  <p>Mass is measured in kilograms ( \(kg\) ).
-  The kilogram is defined in terms of a platinum–iridium standard
-  mass kept near Paris. For measurements on an atomic scale,
-  the atomic mass unit, defined in terms of the atom carbon-12,
-  is usually used.
-  </p>
+    <section id="Topic2">
+      <h2>Time</h2>
+      <p>
+        Time is measured in seconds (<abbr title="second">\(s\)</abbr>). The second is defined in terms of the oscillations of light emitted by a cesium-133 atomic source.
+      </p>
+    </section>
 
-  <h2 id="Topic4">Density</h2>
-  <p>
-  Density is measured in \(kg.m^{\ -3}\).
-  The density \(\rho\) of a material is the mass per unit volume:
-  \( \rho = \frac{m}{V} \)
-  </p>
+    <section id="Topic3">
+      <h2>Mass</h2>
+      <p>
+        Mass is measured in kilograms (<abbr title="kilogram">\(kg\)</abbr>). The kilogram is defined in terms of a platinum–iridium standard mass kept near Paris. For atomic-scale measurements, the atomic mass unit, defined in terms of carbon-12, is usually used.
+      </p>
+    </section>
 
-  <h2 id="Topic5">Prefixes for SI Units</h2>
-  <p>
-  <table>
-    <tr>
-      <th>Factor</th>
-      <th>Prefix</th>
-      <th>Symbol</th>
-    </tr>
-    <tr>
-      <td>10<sup>12</sup></td>
-      <td>tera-</td>
-      <td>T</td>
-    </tr>
-    <tr>
-      <td>10<sup>9</sup></td>
-      <td>giga-</td>
-      <td>G</td>
-    </tr>
-    <tr>
-      <td>10<sup>6</sup></td>
-      <td>mega-</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <td>10<sup>3</sup></td>
-      <td>kilo</td>
-      <td>k</td>
-    </tr>
-    <tr>
-      <td>10<sup>-1</sup></td>
-      <td>deci-</td>
-      <td>d</td>
-    </tr>
-    <tr>
-      <td>10<sup>-2</sup></td>
-      <td>centi-</td>
-      <td>c</td>
-    </tr>
-    <tr>
-      <td>10<sup>-3</sup></td>
-      <td>mili-</td>
-      <td>m</td>
-    </tr>
-    <tr>
-      <td>10<sup>-6</sup></td>
-      <td>micro</td>
-      <td>&micro;</td>
-    </tr>
-    <tr>
-      <td>10<sup>-9</sup></td>
-      <td>nano</td>
-      <td>n</td>
-    </tr>
-    <tr>
-      <td>10<sup>-12</sup></td>
-      <td>pico</td>
-      <td>p</td>
-    </tr>
-  </table>
-  </p>
+    <section id="Topic4">
+      <h2>Density</h2>
+      <p>
+        Density is measured in \(kg·m^{−3}\). The density \(\rho\) of a material is the mass per unit volume:
+        \[
+          \rho = \frac{m}{V}
+        \]
+      </p>
+    </section>
 
-  <p>
-  [<a href="introduction.html">prev</a>]
-  [<a href="introduction.html">contents</a>]
-  [<a href="../../index.html">home</a>]
-  [<a href="chapter2.html">next</a>]
-  </p>
+    <section id="Topic5">
+      <h2>Prefixes for SI Units</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Factor</th>
+            <th>Prefix</th>
+            <th>Symbol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>10<sup>12</sup></td><td>tera-</td><td>T</td></tr>
+          <tr><td>10<sup>9</sup></td><td>giga-</td><td>G</td></tr>
+          <tr><td>10<sup>6</sup></td><td>mega-</td><td>M</td></tr>
+          <tr><td>10<sup>3</sup></td><td>kilo</td><td>k</td></tr>
+          <tr><td>10<sup>-1</sup></td><td>deci-</td><td>d</td></tr>
+          <tr><td>10<sup>-2</sup></td><td>centi-</td><td>c</td></tr>
+          <tr><td>10<sup>-3</sup></td><td>milli-</td><td>m</td></tr>
+          <tr><td>10<sup>-6</sup></td><td>micro-</td><td>&micro;</td></tr>
+          <tr><td>10<sup>-9</sup></td><td>nano-</td><td>n</td></tr>
+          <tr><td>10<sup>-12</sup></td><td>pico-</td><td>p</td></tr>
+        </tbody>
+      </table>
+    </section>
 
+    <nav>
+      <p>
+        [<a href="introduction.html">prev</a>]
+        [<a href="introduction.html">contents</a>]
+        [<a href="../../index.html">home</a>]
+        [<a href="chapter2.html">next</a>]
+      </p>
+    </nav>
+  </main>
 </body>
 </html>
+
