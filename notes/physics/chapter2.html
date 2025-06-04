@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic physics</title>
+  <link rel="stylesheet" href="../../css/style.css"/>
+  <link rel="stylesheet" href="../../css/katex.min.css" />
+  <script defer src="../../js/katex.min.js"></script>
+  <script defer src="../../js/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '\\[', right: '\\]', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false}
+          ]
+        });">
+  </script>
+</head>
+
+<body>
+  <h1>Chapter 2: Motion Along a Straight Line</h1>
+  <p>One purpose of physics is to study the motion of objects,
+  how fast they move and how far they move in a given amount of time.
+  NASCAR engineers are fanatical about this aspect of physics
+  as they determine the performance of their cars before and during a race.
+  In this chapter, we study the basic physics of motion where the object moves
+  along a single axis. Such motion is called <i>one-dimensional motion</i>.
+  </p>
+
+  <h2 id="Topic1">2-1 POSITION, DISPLACEMENT, AND AVERAGE VELOCITY</h2>
+  <h3>Position</h3>
+  <p>The <i>position</i> \(x\) of a particle on an \(x\) axis locates the particle
+  with respect to the <b>origin</b>, or zero point, of the axis.The position
+  is either positive or negative, according to which side of the origin the
+  particle is on, or zero if the particle is at the origin. The <b>positive
+  direction</b> on an axis is the direction of increasing positive numbers,
+  the opposite direction is the <b>negative direction</b> on the axis.
+  Position is measured in meters ( \(m\) ).
+  </p>
+
+  <h3>Displacement</h3>
+  <p>The <i>displacement</i> \(\Delta x\) of a particle is the 
+  change in its position: \[\Delta x = x_2 - x_1 \]
+  </p>
+
+  <p>Displacement is a vector quantity. It is positive if the particle has
+  moved in the positive direction of the \(x\) axis and negative if the
+  particle has moved in the negative direction.
+  Dispalcement is measured in meters ( \(m\) ).
+  </p>
+
+  <h3>Average Velocity</h3>
+  <p>When a particle has moved from position \(x_1\)
+  to position \(x_2\) during a time interval \(\Delta t = t_2 - t_1\),
+  its average velocity during that interval
+  is: \[v_{avg} = \frac{\Delta x}{\Delta t} = \frac{x_2 - x_1}{t_2 - t_1}\]
+  </p>
+
+  <p>The algebraic sign of \(v_{avg}\) indicates the
+  direction of motion (\(v_{avg}\) is a vector quantity).
+  Average velocity does not depend on the actual distance a particle moves,
+  but instead depends on its original and final positions.
+  </p>
+  
+  <p>On a graph of \(x\) versus \(t\) , the average velocity for a time
+  interval \(\Delta t\) is the slope of the straight line connecting
+  the points on the curve that represent the two ends of the interval.
+  Avarage velocity is measured in meters per second ( \(m.s^{\ -1}\) ).
+  </p>
+
+  <h3>Average Speed</h3>
+  <p><i>The average speed</i> \(s_{avg}\) of a particle during a
+  time interval \(\Delta t\) depends on the total distance the
+  particle moves in that time
+  interval: \[s_{avg} = \frac{total\ distance}{\Delta t}\]
+  <br>Average speed does not include direction.
+  It is measured in meters per second ( \(m.s^{\ -1}\) ).
+  </p>
+
+  <h2 id="Topic2">2-2 INSTANTANEOUS VELOCITY AND SPEED</h2>
+  <p>The <i>instantaneous velocity</i> (or simply <b>velocity</b>)
+  \(v\) refers to how fast a particle is moving at a given
+  instant: \[v = \lim_{\Delta t \to 0} \frac{\Delta x}{\Delta t} = \frac{dx}{dt}\]
+  where the <i>displacement</i> \(\Delta x = x_2 - x_1\) and
+  <i>time interval</i> \(\Delta t = t_2 - t_1\) .
+  </p>
+
+  <p><b>Speed</b> is the magnitude of instantaneous velocity.
+  Both speed and velocity are measured in meters per second ( \(m.s^{\ -1}\) ) .
+  </p>
+
+  <h2 id="Topic3">2-3 ACCELERATION</h2>
+  <p>When a particle’s velocity changes,
+  the particle is said to undergo acceleration (or to accelerate).
+  </p>
+
+  <h3>Average acceleration</h3>
+  <p><i>Average acceleration</i> is the ratio of a change in velocity
+  \(\Delta v\) to the time interval \(\Delta t\) in which the change
+  occurs. \[a_{avg} = \frac{\Delta v}{\Delta t}\]
+  where the particle has velocity \(v_1\) at time \(t_1\)
+  and then velocity \(v_2\) at time \(t_2\) .
+  Avarage velocity is measured in meters per second squared ( \(m.s^{\ -2}\) ).
+  </p>
+
+  <h3>Instantaneous acceleration</h3>
+  <p><i>Instantaneous acceleration</i> (or simply <b>acceleration</b>) \(a\) is
+  the rate at which its velocity is changing at that instant.
+  \[a = \frac{dv}{dt} = \frac{d^{\ 2}x}{dt^{\ 2}}\]
+  </p>
+
+  <h2 id="Topic4">2-4 CONSTANT ACCELERATION</h2>
+  <p>The following five equations describe the motion of a particle
+  with constant acceleration:
+  \[v = v_0 + at\]
+  \[v^{\ 2} = v_{0}^{\ 2} + 2 a\ (x - x_0)\]
+  \[x - x_0 = v_0 t + \frac{1}{2} at^{\ 2}\]
+  \[x - x_0 = \frac{1}{2} (v_0 + v)t\]
+  \[x - x_0 = vt - \frac{1}{2}at^{\ 2}\]
+  These equations are not valid when the acceleration is not constant.
+  </p>
+  
+  <h2 id="Topic5">2-5 FREE-FALL ACCELERATION</h2>
+  <p>An important example of straight-line motion with constant
+  acceleration is that of an object rising or falling freely near
+  Earth’s surface. The constant acceleration equations describe
+  this motion, but we make two changes in notation:<br><br>
+  (1) we refer the motion to the vertical \(y\) axis with
+  \(+y\) vertically up.<br><br>
+  (2) we replace \(a\) with \(-g\), where \(g\)
+  is the magnitude of the free-fall acceleration.
+  Near Earth’s surface, \(g = 9.8 m.s^{\ 2}\).
+  </p>
+
+  <p>Note: free-fall acceleration near Earth’s surface is
+  \(a = -g = -9.8 \ m.s^{\ -2}\) , and the magnitude of the acceleration
+  is <br> \(g = 9.8 \ m.s^{\ -2}\) .
+  Do not substitute \(-9.8\ m.s^{\ -2}\) for \(g\) .
+  </p>
+
+  <h2 id="Topic6">2-6 GRAPHICAL INTEGRATION IN MOTION ANALYSIS</h2>
+  <p>On a graph of acceleration \(a\) versus time \(t\) , the change in
+  the velocity is given by<br><br>
+  \(v_1 - v_0 = \int_{t_0}^{t_1} a \ dt\) <br><br>
+  The integral amounts to finding an area on the graph:<br><br>
+  \( \int_{t_0}^{t_1} a \ dt = (\) area between acceleration
+  curve and time axis, from \(t_0\) to \(t_1)\)
+  </p>
+
+  <div class="container">
+    <img src="../../images/physics/f2-14a.png" alt="figure 2-14a" class="figures"/>
+    <div class="info">
+        <p>This area gives the change in velocity.</p>
+    </div>
+  </div>
+
+  <p>On a graph of velocity \(v\) versus time \(t\) , the change in the
+  position is given by<br><br> \(x_1 - x_0 = \int_{t_0}^{t_1} v \ dt\)
+  <br><br> The integral amounts to finding an area on the graph:<br><br>
+  \( \int_{t_0}^{t_1} v \ dt = (\) area between velocity
+  curve and time axis, from \(t_0\) to \(t_1)\)
+  </p>
+
+  <div class="container">
+    <img src="../../images/physics/f2-14b.png" alt="figure 2-14b" class="figures"/>
+    <div class="info">
+        <p>This area gives the change in position.</p>
+    </div>
+  </div>
+
+
+  <p>
+  [<a href="chapter1.html">prev</a>]
+  [<a href="introduction.html">contents</a>]
+  [<a href="../../index.html">home</a>]
+  [<a href="chapter3.html">next</a>]
+  </p>
+
+</body>
+</html>

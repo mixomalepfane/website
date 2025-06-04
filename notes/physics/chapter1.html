@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Physics notes</title>
-  <link rel="stylesheet" href="../../css/fraction.css"/>
-  <link rel="stylesheet" href="../../css/table.css"/>
+  <title>Basic physics</title>
+  <link rel="stylesheet" href="../../css/style.css"/>
+  <link rel="stylesheet" href="../../css/katex.min.css" />
+  <script defer src="../../js/katex.min.js"></script>
+  <script defer src="../../js/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '\\[', right: '\\]', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false}
+          ]
+        });">
+  </script>
 </head>
 
 <body>
@@ -19,20 +30,20 @@
   </p>
 
   <h2 id="Topic1">Length</h2>
-  <p>Length is measured in meters(m).
+  <p>Length is measured in meters ( \(m\) ).
   The meter is the length of the path traveled by light in a vacuum
   during a time interval of 1/299 792 458 of a second.
-  This time interval was chosen so that the speed of light c is exactly
-  c = 299 792 458 m.s<sup>-1</sup>.
+  This time interval was chosen so that the speed of light <i>c</i> is exactly
+  <i>c</i> = 299 792 458 m.s<sup>-1</sup>.
   </p>
 
   <h2 id="Topic2">Time</h2>
-  <p>Time is measured in seconds(s). The second is defined in terms
+  <p>Time is measured in seconds ( \(s\) ). The second is defined in terms
   of the oscillations of light emitted by an atomic (cesium-133) source.
   </p>
 
   <h2 id="Topic3">Mass</h2>
-  <p>Mass is measured in kilograms(kg).
+  <p>Mass is measured in kilograms ( \(kg\) ).
   The kilogram is defined in terms of a platinum–iridium standard
   mass kept near Paris. For measurements on an atomic scale,
   the atomic mass unit, defined in terms of the atom carbon-12,
@@ -40,15 +51,11 @@
   </p>
 
   <h2 id="Topic4">Density</h2>
-  Density is measured in kg.m<sup>-3</sup>.
-  The density <i>p</i> of a material is the mass per unit volume:
-  <div class="equation">
-    <span> &rho; = </span>
-    <span class="fraction">
-      <span class="top">m</span>
-      <span class="bottom">V</span>
-    </span>
-  </div>
+  <p>
+  Density is measured in \(kg.m^{\ -3}\).
+  The density \(\rho\) of a material is the mass per unit volume:
+  \( \rho = \frac{m}{V} \)
+  </p>
 
   <h2 id="Topic5">Prefixes for SI Units</h2>
   <p>
@@ -117,5 +124,6 @@
   [<a href="../../index.html">home</a>]
   [<a href="chapter2.html">next</a>]
   </p>
+
 </body>
 </html>

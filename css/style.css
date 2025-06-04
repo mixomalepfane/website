@@ -1,0 +1,68 @@
+/* Ordered List */
+
+ol {
+    counter-reset: item;
+}
+
+li {
+    display: block;
+}
+
+li::before {
+    counter-increment: item;
+    content: counters(item, ".") ". ";
+}
+
+/* Website Body */
+
+body {
+    font-family: sans-serif;
+    margin: 2rem;
+    background: #f9f9f9;
+    color: #333;
+}
+
+/* H2 Header */
+
+h2 {
+    margin-top: 2em;
+    color: #222;
+}
+
+/* Tables */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2em;
+}
+
+th, td {
+    border: 1px solid #aaa;
+    padding: 0.5em;
+    text-align: center;
+}
+
+th {
+    background: #eee;
+}
+
+code {
+    background: #eee;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+}
+ 
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.figures {
+  width: 140px;
+  height: auto;
+  border: 2px solid #444;
+}
+
