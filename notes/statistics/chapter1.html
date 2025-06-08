@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistics</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/katex.min.css" />
+  <script defer src="../../js/katex.min.js"></script>
+  <script defer src="../../js/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '\\[', right: '\\]', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false}
+      ]
+    });">
+  </script>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1><a href="introduction.html"> <</a> Chapter 1: Probability</h1>
+    </header>
+
+    
+    <section id="Topic1">
+      <h2>1.1. Sample Spaces</h2>
+      <p>Probability theory is concerned with situations in which the
+      outcomes occur randomly. Generically, such situations are called
+      <i>experiments</i>, and the set of all possible outcomes is the
+      <b>sample space</b> corresponding to an experiment. The sample space
+      is denoted by \(\Omega\), and an element of \(\Omega\) is denoted by
+      \(\omega\).
+      </p>
+
+      <h3>EXAMPLE 1</h3>
+      <p>Suppose that a fair coin is thrown 3 times. The sample space is
+      the set of all possible outcomes:
+      \[\Omega = \{hhh, hht, htt, hth, thh, tht, tth, ttt\ \}\]
+      where \(h\) denotes heads and \(t\) tails.
+      </p>
+
+      <p>We are often interested in particular subsets of \(\Omega\),
+      which are called <b>events</b>. In <b>Example 1</b>, the event that
+      the first coin toss results in heads \(h\) is
+      \[A = \{hhh, hht, hth, htt\ \}\]
+      </p>
+
+      <p>The <b>union</b> of two events, \(A\) and \(B\), is the event \(C\)
+      that either \(A\) occurs or \(B\) occurs or both occur:
+      \[C = A \cup B\]
+      </p>
+      <div class="container">
+        <img src="../../images/statistics/f1.1a.png" alt="figure 1.1a" class="figures"/>
+      </div>
+
+      <p>From <b>example 1</b>, if \(A\) is the event that the first coin toss is
+      heads \(h\) and \(B\) the event that the last is tails \(t\) , then
+      \[A = \{hhh, hht, hth, htt\ \}\]
+      \[B = \{hht, htt, tht, ttt\ \}\]
+      \[A \cup B = \{hhh, hht, hth, htt, tht, ttt\ \}\]
+      </p>
+
+      <p>The <b>intersection</b> of two events, \(A\) and \(B\),
+      is the event \(C\) that both \(A\) and \(B\) occur:
+      \[C = A \cap B\]
+      </p>
+      <div class="container">
+        <img src="../../images/statistics/f1.1b.png" alt="figure 1.1b" class="figures"/>
+      </div>
+
+      <p>If \(A\) and \(B\) are as given previously, then \(C\) consists
+      of those outcomes that are common to both \(A\) and \(B\):
+      \[C = A \cap B = \{htt, hht\ \}\]
+      </p>
+
+      <p>The <b>complement</b> of an event, \(A^c\), is the event that
+      \(A\) does not occur and thus consists of all those elements
+      in the sample space that are not in \(A\) .
+      The complement of the event that the first coin tossed is heads:
+      \[A^c = \{thh, tht, tth, ttt\ \}\]
+      </p>
+
+      <p>The <b>empty set</b>, usually denoted by \(\emptyset\) , is the
+      set with no elements. It is the event with no outcomes.
+      For example, if \(A\) is the event that the first toss is heads and
+      \(D\) the event that all tosses are tails, then
+      \(A\) and \(D\) have no outcomes in common, and we can write
+      \[A \cap D = \empty\]
+      In such cases, \(A\) and \(D\) are said to be <b>disjoint</b>.
+      </p>
+
+      <p>The following are some laws of set theory.<br>
+      <b>Commutative Laws</b>:
+      \[A \cup B = B \cup A\]
+      \[A \cap B = B \cap A\]
+      <b>Associative Laws</b>:
+      \[(A \cup B\ ) \cup C = A \cup\ (B \cup C\ )\]
+      \[(A \cap B\ ) \cap C = A \cap\ (B \cap C\ )\]
+      <b>Distributive Laws</b>:
+      \[(A \cup B\ ) \cap C = (A \cap C\ ) \cup\ (B \cap C\ )\]
+      \[(A \cap B\ ) \cup C = (A \cup C\ ) \cap\ (B \cup C\ )\]
+      </p>
+    </section>
+
+    <section id="Topic2">
+      <h2>1.2. Probability Measures</h2>
+      <p>A <b>probability measure</b> on \(\Omega\) is a function \(P\) from
+      subsets of \(\Omega\) to the real numbers that satisﬁes the
+      following axioms:
+      </p>
+      <ul>
+        <li> \(P(\Omega) = 1\)</li>
+        since \(\Omega\) consists of all possible outcomes.<br><br>
+        <li> If \(A \sub \Omega\) , then \(P(A) \geq 0\)</li>
+        meaning that a probability is nonnegative.<br><br>
+        <li> If \(A_1\) and \(A_2\) are disjoint, then
+          \[P(A_1 \cup A_2) = P(A_1) + P(A_2)\]
+          More generally, if \(A_1, A_2, ..., A_n, ...\) are
+          mutually disjoint, then
+          \[P\biggl(\cup_{i\ =\ 1}^{\infty} A_i \biggr) =
+          \sum_{i\ =\ 1}^{\infty} P(A_i)\]
+        </li>
+      </ul>
+
+      <h3>Properties of probability measures</h3>
+      <p>
+      1. \(\ \ P(A^c\ ) = 1 - P(A\ )\)<br>
+        <b>Proof</b>: Since \(A\) and \(A^c\) are disjoint
+        \[A \cup A^c = \Omega\]
+        \[P(A \cup A^c\ ) = P(\Omega)\]
+        \[P(A\ ) + P(A^c\ ) = 1\]
+        \[P(A^c\ ) = 1 - P(A\ )\]
+      </p>
+
+      <p>2. \(\ \ P(\empty) = P(\Omega^c\ )\)<br>
+        <b>Proof</b>:
+        \[\empty = \Omega^c\]
+        \[P(\empty) = P(\Omega^c\ )\]
+      </p>
+
+      <p>3. \(\ \ \) If \(A \sub B\ \), then \(P(A\ ) \leq P(B\ )\)<br>
+      This property states that if \(B\) occurs whenever \(A\) occurs,
+      then \(P(A\ ) \leq P(B\ )\)<br><b>Proof</b>:
+      </p>
+
+      <p>4. \(\ \ P(A \cup B\ ) = P(A\ ) + P(B\ ) - P(A \cap B\ )\)
+      <br><b>Proof</b>:
+      </p>
+
+    </section>
+
+    <section id="Topic3">
+      <h2>1.3. Computing Probabilities: Counting Methods</h2>
+      <p>
+      </p>
+    </section>
+
+    <section id="Topic4">
+      <h2>1.4. Conditional Probability</h2>
+      <p>
+      </p>
+    </section>
+
+    <section id="Topic5">
+      <h2>1.5. Independence</h2>
+      <p></p>
+    </section>
+
+    <nav>
+      <p>
+        [<a href="introduction.html">prev</a>]
+        [<a href="introduction.html">contents</a>]
+        [<a href="../../index.html">home</a>]
+        [<a href="chapter2.html">next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>

@@ -51,19 +51,6 @@ a:hover {
     text-decoration: underline;
 }
 
-ol {
-    counter-reset: item;
-}
-
-li {
-    display: block;
-}
-
-li::before {
-    counter-increment: item;
-    content: counters(item, ".") ". ";
-}
-
 table {
     width: 100%;
     border-collapse: collapse;
