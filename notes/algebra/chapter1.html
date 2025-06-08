@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linear Algebra</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/katex.min.css" />
+  <script defer src="../../js/katex.min.js"></script>
+  <script defer src="../../js/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '\\[', right: '\\]', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false}
+      ]
+    });">
+  </script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>
+        <a href="introduction.html" aria-label="Back to Introduction">&lt;</a>
+        Chapter 1: Linear Equations
+      </h1>
+    </header>
+
+    <section id="Topic1">
+      <h2>1.1. Systems of Linear Equations</h2>
+
+      <h3>Linear Equations and Systems</h3>
+      <p>A <b>linear equation</b> in the variables \(x_1, x_2, ..., x_n\) is an
+      equation that can be written in the form
+      \[a_1x_1 + a_2x_2 + \dotsc + a_nx_n = b\]
+      where \(b\) and the <b>coefﬁcients</b> \(a_1, a_2, \dotsc, a_n\) are
+      real or complex numbers, usually known in advance.
+      </p>
+
+      <p>Example: \(\ 4x_1 - 5x_2 = 2\)</p>
+
+      <p>A <b>system of linear equations</b> (or a <b>linear system</b>)
+      is a collection of one or more linear equations involving
+      the same variables, \(x_1, x_2, \dotsc, x_n\) .
+      In general, a system of linear equations looks like this:
+      \[a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n = b_1\]
+      \[a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n = b_2\]
+      \[ \quad\quad\quad\quad\quad\vdots\quad\quad\quad\quad\quad\ = \vdots\]
+      \[a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n = b_m\]
+      We say that it is a system with \(m\) <b>equations</b> in \(n\) <b>unknowns</b>.
+      </p>
+
+      <p>Example: \[\ 2x_1 + x_2 = 3\]
+      \[x_1 - x_2 = 0\]
+      </p>
+
+      <h3>Solutions of Linear Systems</h3>
+      <p>A <b>solution</b> of a linear system is an ordered list of numbers
+      \((s_1, s_2, \dotsc, s_n)\) which satisfies each equation in the system.
+      That is, if the values \(s_1, s_2, \dotsc, s_n\) are substituted
+      in for \(x_1, x_2, \dotsc, x_n\), then each equation is true.
+      </p>
+
+      <p>The set of all possible solutions is called the <b>solution set</b>
+      of the linear system.Two linear systems are called <b>equivalent</b>
+      if they have the same solution set.</p>
+
+      A system of linear equations has either
+      <ul>
+        <li>a unique solution</li>
+        <li>infinitely many solutions</li>
+        <li>no solutions</li>
+      </ul>
+
+      <p>A system of linear equations is said to be <b>consistent</b>
+      if it has either one solution or inﬁnitely many solutions.
+      A system is <b>inconsistent</b> if it has no solution.</p>
+
+      <h3>Matrix Notation</h3>
+      <p>Given a linear system,\[a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n = b_1\]
+      \[a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n = b_2\]
+      \[ \quad\quad\quad\quad\quad\vdots\quad\quad\quad\quad\quad\ = \vdots\]
+      \[a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n = b_m\]
+ 
+      we write the system in <b>augmented matrix</b> form
+      \[\begin{vmatrix}a_{11} & a_{12} & \dots & a_{1n} & b_1\\
+      a_{21} & a_{22} & \dots & a_{2n} & b_2\\
+      \vdots & \vdots & \ddots & \vdots & \vdots\\
+      a_{m1} & a_{22} & \dots & a_{mn} & b_m\end{vmatrix}\]
+      An \(m\) x \(n\) matrix is a rectangular array of numbers with
+      \(m\) rows and \(n\) columns.
+      </p>
+
+      <h3>Elementary Row Operations</h3>
+      <p>Once we have the system in augmented matrix form,
+      we apply so-called <b>elementary row operations</b>. Doing so has the
+      effect of replacing the original linear system with a simpler one,
+      whose solutions are much easier to calculate.
+      </p>
+      There are three types of elementary row operations
+      <ol>
+        <li><b>Replacement</b>: Replace one row with the sum of itself and a
+          scalar multiple of another row.
+        </li>
+        <li><b>Interchange</b>: Interchange two rows.</li>
+        <li><b>Scaling</b>: Multiply all entries in a row by a non-zero scalar.</li>
+      </ol>
+
+      <p>Two matrices are called <b>row-equivalent</b> if one can be transformed
+      into the other by applying a finite number of elementary row operations.
+      </p>
+    </section>
+
+    <section id="Topic2">
+      <h2>1.2. Row Reduction and Echelon Forms</h2>
+
+      <h3>Row Echelon Form</h3>
+      <p>A <b>zero row</b> in a matrix is a row where each entry in the row is zero.
+      A <b>non-zero row</b> in a matrix is a row which contains at least one
+      non-zero entry. A <b>leading entry</b> in a non-zero row is the first
+      non-zero entry in that row (reading from left to right).
+      </p>
+
+      We say that a matrix is in <b>row echelon form</b> (or <b>echelon form</b>)
+      if it satisfies the following conditions:
+      <ul>
+        <li>All the non-zero rows are above the zero rows.</li>
+        <li>Every leading entry in a row is in a column to the right of the
+          leading entry in the row above it.
+        </li>
+        <li>All entries in a column below a leading entry are zeros.</li>
+      </ul>
+
+      We say that a matrix is in <b>reduced row echelon form</b>
+      (or <b>reduced echelon form</b>) if it is firstly in row echelon form and
+      then further satisfies the following conditions:
+      <ul>
+        <li>Each leading entry in a non-zero row is 1 (called a <b>leading 1</b>).</li>
+        <li>Each leading 1 is the only non-zero entry in its column.</li>
+      </ul>
+
+      <p><b>Theorem 1</b><br>Every matrix is row-equivalent to a unique
+      (i.e. one and only one) matrix which is in reduced row echelon form.
+      </p>
+
+      <h3>Solutions of a Linear System</h3>
+      <p>A <b>pivot position</b> of a matrix \(A\) is a position in \(A\) which
+      corresponds to the position of a leading 1 in the reduced row echelon
+      form of \(A\). A <b>pivot column</b> of \(A\) is a column of \(A\) which
+      contains a pivot position.
+      </p>
+
+      <p>The variables in a linear system which correspond to pivot
+      columns in the augmented matrix of the linear system are called
+      the <b>leading variables</b> (or the <b>basic variables</b>).
+      The remaining variables are called <b>free variables</b>.
+      </p>
+
+      <p><b>Theorem 2</b><br>
+      A linear system is consistent (i.e. has a solution) if and ony if the right-most
+      column of the augmented matrix of the system is <b>NOT</b> a pivot column,
+      that is, if and only if the augmented matrix has no row of the form
+      \[\begin{bmatrix}0 & \dots & 0 & b\end{bmatrix}\] with with b nonzero.
+      If a linear system is consistent, then the solution set contains either
+      <ul>
+        <li>a unique solution, if there are no free variables.</li>
+        <li>infinitely many solutions, if there is at least one free variable.</li>
+      </ul>
+      </p>
+   </section>
+
+    <section id="Topic3">
+      <h2>1.3. Vector Equations</h2>
+
+    </section>
+
+    <section id="Topic4">
+      <h2>1.4. The Matrix Equation Ax = b</h2>
+    </section>
+
+    <section id="Topic5">
+      <h2>1.5. Solution Sets of Linear Systems</h2>
+    </section>
+
+    <section id="Topic6">
+      <h2>1.6. Linear Independence</h2>
+    </section>
+
+    <section id="Topic7">
+      <h2>1.7. Introduction to Linear Transformations</h2>
+    </section>
+
+    <section id="Topic8">
+      <h2>1.8. The Matrix of a Linear Transformation</h2>
+    </section>
+
+    <nav>
+      <p>
+        [<a href="introduction.html">Prev</a>]
+        [<a href="introduction.html">Contents</a>]
+        [<a href="../../index.html">Home</a>]
+        [<a href="chapter2.html">Next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>
