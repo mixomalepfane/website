@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Statistics</title>
-  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/statistics/style.css"/>
   <link rel="stylesheet" href="../../css/katex.min.css" />
   <script defer src="../../js/katex.min.js"></script>
   <script defer src="../../js/auto-render.min.js"
@@ -22,7 +22,7 @@
 <body>
   <main>
     <header>
-      <h1><a href="introduction.html"> <</a> Chapter 1: Probability</h1>
+      <h1><a href="intro.html"> <</a> Chapter 1: Probability</h1>
     </header>
 
     
@@ -105,77 +105,12 @@
       \[(A \cap B\ ) \cup C = (A \cup C\ ) \cap\ (B \cup C\ )\]
       </p>
     </section>
-
-    <section id="Topic2">
-      <h2>1.2. Probability Measures</h2>
-      <p>A <b>probability measure</b> on \(\Omega\) is a function \(P\) from
-      subsets of \(\Omega\) to the real numbers that satisﬁes the
-      following axioms:
-      </p>
-      <ul>
-        <li> \(P(\Omega) = 1\)</li>
-        since \(\Omega\) consists of all possible outcomes.<br><br>
-        <li> If \(A \sub \Omega\) , then \(P(A) \geq 0\)</li>
-        meaning that a probability is nonnegative.<br><br>
-        <li> If \(A_1\) and \(A_2\) are disjoint, then
-          \[P(A_1 \cup A_2) = P(A_1) + P(A_2)\]
-          More generally, if \(A_1, A_2, ..., A_n, ...\) are
-          mutually disjoint, then
-          \[P\biggl(\cup_{i\ =\ 1}^{\infty} A_i \biggr) =
-          \sum_{i\ =\ 1}^{\infty} P(A_i)\]
-        </li>
-      </ul>
-
-      <h3>Properties of probability measures</h3>
-      <p>
-      1. \(\ \ P(A^c\ ) = 1 - P(A\ )\)<br>
-        <b>Proof</b>: Since \(A\) and \(A^c\) are disjoint
-        \[A \cup A^c = \Omega\]
-        \[P(A \cup A^c\ ) = P(\Omega)\]
-        \[P(A\ ) + P(A^c\ ) = 1\]
-        \[P(A^c\ ) = 1 - P(A\ )\]
-      </p>
-
-      <p>2. \(\ \ P(\empty) = P(\Omega^c\ )\)<br>
-        <b>Proof</b>:
-        \[\empty = \Omega^c\]
-        \[P(\empty) = P(\Omega^c\ )\]
-      </p>
-
-      <p>3. \(\ \ \) If \(A \sub B\ \), then \(P(A\ ) \leq P(B\ )\)<br>
-      This property states that if \(B\) occurs whenever \(A\) occurs,
-      then \(P(A\ ) \leq P(B\ )\)<br><b>Proof</b>:
-      </p>
-
-      <p>4. \(\ \ P(A \cup B\ ) = P(A\ ) + P(B\ ) - P(A \cap B\ )\)
-      <br><b>Proof</b>:
-      </p>
-
-    </section>
-
-    <section id="Topic3">
-      <h2>1.3. Computing Probabilities: Counting Methods</h2>
-      <p>
-      </p>
-    </section>
-
-    <section id="Topic4">
-      <h2>1.4. Conditional Probability</h2>
-      <p>
-      </p>
-    </section>
-
-    <section id="Topic5">
-      <h2>1.5. Independence</h2>
-      <p></p>
-    </section>
-
     <nav>
       <p>
-        [<a href="introduction.html">prev</a>]
-        [<a href="introduction.html">contents</a>]
+        [<a href="intro.html">prev</a>]
+        [<a href="intro.html">contents</a>]
         [<a href="../../index.html">home</a>]
-        [<a href="chapter2.html">next</a>]
+        [<a href="ch1.2.html">next</a>]
       </p>
     </nav>
   </main>

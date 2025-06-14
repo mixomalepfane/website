@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistics</title>
+  <link rel="stylesheet" href="../../css/statistics/style.css"/>
+  <link rel="stylesheet" href="../../css/katex.min.css" />
+  <script defer src="../../js/katex.min.js"></script>
+  <script defer src="../../js/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '\\[', right: '\\]', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false}
+      ]
+    });">
+  </script>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1><a href="intro.html"> <</a> Chapter 1: Probability</h1>
+    </header>
+
+    <section>
+      <h2>1.3. Computing Probabilities: Counting Methods</h2>
+      <p>Suppose we have an experiment where the sample space
+      \(\Omega\) has a finite number of elements,
+      \(\Omega = \{\omega_1, \omega_2, \dots, \omega_N\}\) .
+      Suppose further that each element \(\Omega\) has the same
+      probability of occuring: 
+      \[P(\{\omega_i\}) = \frac{1}{N}\]
+      </p>
+
+      <p>Suppose \(A\) is the event \(A = \{\omega_1, \omega_2, \dots, \omega_k\}\) .
+      Then \[P(A\ ) = \frac{number\ of\ elements\ in\ A}{number\ of\ elements\ in\ \Omega}
+      = \frac{k}{N}\]
+      </p>
+
+      <h4>EXAMPLE A</h4>
+      <p>Suppose that a fair coin is thrown twice and the sequence of heads
+      and tails is recorded. The sample space is
+      \[\Omega = \{hh, ht, th, tt\}\]
+      As in Example A of the previous section,
+      we assume that each outcome in \(\Omega\) has probability \(0.25\).
+      Let \(A\) denote the event that at least one head is thrown.
+      Then \[A = \{hh, ht, th\}\] and \[P(A\ ) = 0.25 + 0.25 + 0.25 = 0.75\]
+      </p>
+    </section>
+
+    <section>
+      <h3>The Multiplication Principle</h3>
+      <p>If one experiment has \(m\) outcomes and another
+      experiment has \(n\) outcomes, then there are \(mn\) possible
+      outcomes for the two experiments.
+      </p>
+
+      <h4>EXAMPLE B</h4>
+      <p>Playing cards have \(13\) face values and \(4\) suits.
+      There are thus \[4 × 13 = 52\] face value/suit combinations.
+      </p>
+
+      <h4>EXAMPLE C</h4>
+      <p>A class has \(12\) boys and \(18\) girls.
+      The teacher selects \(1\) boy and \(1\) girl to act as
+      representatives to the student government.
+      She can do this in any of \[12 × 18 = 216\] different ways.
+      </p>
+    </section>
+
+    <section>
+      <h3>The Extended Multiplication Principle</h3>
+      <p>If there are \(p\) experiments and the ﬁrst has \(n_1\) possible outcomes,
+      the second \(n_2\ , \dots, \) and the \(p\) th with \(n_p\) possible outcomes,
+      then there are a total of \[n_1 × n_2 × \dots × n_p\]
+      possible outcomes for the \(p\) experiments.
+      </p>
+
+      <h4>EXAMPLE D</h4>
+      <p>An \(8\)-bit binary word is a sequence of \(8\) digits,
+      of which each may be either a \(0\) or a \(1\).
+      How many different \(8\)-bit words are there?
+      </p>
+
+      <p>There are two choices for the ﬁrst bit, two for the second,
+      etc., and thus there are \[2×2×2×2×2×2×2×2=2^8=256\]such words.
+      </p>
+    </section>
+
+    <section>
+      <h3>Permutations</h3>
+      <p>A <b>permutation</b> is an ordered arrangement of objects.
+      </p>
+      <p>Suppose that from the set \(C = \{c_1 , c_2 , \dots, c_n \}\)
+      we choose \(r\) elements and list them in order. How many ways can we do this?
+      The answer depends on whether we are allowed to duplicate items in the list.
+      If no duplication is allowed, we are <b>sampling without replacement</b>.
+      If duplication is allowed, we are <b>sampling with replacement</b>.
+      </p>
+
+      <h4>PROPOSITION A</h4>
+      <p>For a set of size \(n\) and a sample of size \(r\) , there are
+      \[n×n×\dots×n = n^{\ r}\] different ordered <b>samples with replacement</b>
+      and \[n\ (n − 1)\ (n − 2) \dots (n − r + 1) = \frac{n!}{(n-r\ )!}\] different ordered
+      <b>samples without replacement</b>.
+      </p>
+
+      <h4>COROLLARY A</h4>
+      <p>The number of orderings of \(n\) elements is
+      \[n\ (n − 1)\ (n − 2) \dots 1 = n!\]
+      </p>
+
+      <h4>EXAMPLE E</h4>
+      <p>How many ways can ﬁve children be lined up?
+      </p>
+
+      <p>This corresponds to <b>sampling without replacement</b>.
+      According to Corollary A, there are
+      \[5! = 5 × 4 × 3 × 2 × 1 = 120\] different lines.
+      </p>
+
+      <h4>EXAMPLE F</h4>
+      <p>Suppose that from ten children, ﬁve are to be chosen and lined up.
+      How many different lines are possible?
+      </p>
+
+      <p> From Proposition A,
+      there are \[10 × 9 × 8 × 7 × 6 = 30,240\] different lines.
+      </p>
+
+      <h4>EXAMPLE G</h4>
+      <p>In some states, license plates have six characters:
+      three letters followed by three numbers.
+      How many distinct such plates are possible?
+      </p>
+
+      <p>This corresponds to <b>sampling with replacement</b>.
+      </p>
+      
+      <p>There are \(26^3 = 17,576\) different
+      ways to choose the letters and \(10^3 = 1000\) ways to choose the numbers.
+      Using the multiplication principle again,
+      we ﬁnd there are \[17,576 × 1000 = 17,576,000\] different plates.
+      </p>
+
+      <h4>EXAMPLE H: Birthday Problem</h4>
+      <p>Suppose that a room contains \(n\) people.
+      What is the probability that at least two of them have a common birthday?
+      </p>
+
+      <p>This is a famous problem with a counterintuitive answer.
+      Assume that every day of the year is equally likely to be a birthday,
+      disregard leap years, and denote by \(A\) the event that at least
+      two people have a common birthday.
+      </p>
+
+      <p>As is sometimes the case, ﬁnding \(P(A^c\ )\) is easier than ﬁnding \(P(A\ )\) .
+      This is because \(A\) can happen in many ways, whereas \(A^c\ \) is much simpler.
+      There are \(365^n\) possible outcomes, and \(A^c\) can happen in
+      \[365 × 364 × \dots × (365 − n + 1)\] ways. Thus,
+      \[P(A^c\ ) = \frac{365 × 364 × \dots × (365 − n + 1)}{365^n}\]
+      and \[P(A\ ) = 1 - \frac{365 × 364 × \dots × (365 − n + 1)}{365^n}\]
+      </p>
+
+      The following table exhibits the latter probabilities for various values of \(n\)
+      <table>
+        <thead>
+          <tr>
+            <th>\(n\)</th>
+            <th>\(P(A\ )\)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>4</td><td>0.016</td></tr>
+          <tr><td>16</td><td>0.284</td></tr>
+          <tr><td>23</td><td>0.507</td></tr>
+          <tr><td>32</td><td>0.753</td></tr>
+          <tr><td>40</td><td>0.891</td></tr>
+          <tr><td>56</td><td>0.988</td></tr>
+        </tbody>
+      </table>
+
+      <p>From the table, we see that if there are only \(23\) people,
+      the probability of at least one match exceeds \(0.5\).
+      The probabilities in the table are larger than one might intuitively guess,
+      showing that the coincidence is not unlikely.
+      </p>
+    </section>
+
+    <section>
+      <h3>Combinations</h3>
+      <p>A <b>combination</b> is an unordered set of elements.
+      </p>
+      
+      <p>If \(r\) objects are taken from a set of \(n\) objects without
+      replacement and disregarding order, how many different samples are possible?
+      </p>
+
+      <p>From the multiplication principle, the number of ordered samples equals the
+      number of unordered samples multiplied by the number of ways to order each sample.
+      Since the number of ordered samples is \[n\ (n − 1) \dots (n − r + 1)\]
+      and since a sample of size \(r\) can be ordered in \(r\ !\) ways (Corollary A),
+      the number of unordered samples is
+      \[\frac{n(n − 1) \dots (n − r + 1)}{r\ !} = \frac{n!}{(n − r\ )!\ r\ !}\]
+      This number is also denoted as \(\binom{n\ }{r\ } \) .
+      </p>
+
+      <h4>Important Properties of \(\binom{n\ }{r\ }\)</h4>
+      <p>\[1.\ \ \binom{n\ }{r\ } = \frac{n!}{r\ !\ (n-r\ )!} = \binom{n}{n-r\ }\]
+      \[2.\ \ \binom{n\ }{1\ } = \frac{n!}{1!\ (n-1\ )!} = n\]
+      \[3.\ \ \binom{n\ }{0\ } = \frac{n!}{0!\ (n-0)!} = \frac{1}{0!} = 1\]
+      </p>
+
+      <h4>EXAMPLE I</h4>
+      <p>A cage contains \(100\) mice numbered \(1\) to \(100\) in order to identify each one.
+      In how many ways can \(12\) mice be randomly drawn from the cage?
+      \[\binom{100\ }{12\ } = \frac{100!}{(100 - 12)!\ 12!} = 1\ 050\ 421\ 051\ 106\ 700\]
+      </p>
+
+      <h4>PROPOSITION C</h4>
+      <p>The number of ways that \(n\) objects can be grouped into \(r\) classes
+      with \(n_i\) in the \(i\) th class, \(i = 1, \dots , r\) , and
+      \(\sum^{r}_{i\ = 1} n_i = n\) is
+      \[\binom{n}{n_1\ n_2\ \dots\ n_r\ } = \frac{n!}{n_1!\ n_2!\ \dots\ n_r!}\]
+      </p>
+
+      <h4>EXAMPLE J</h4>
+      <p>A committee of seven members is to be divided into three subcommittees of size
+      three, two, and two. This can be done in
+      \[\binom{7}{3\ \ 2\ \ 2} = \frac{7}{3!\ \ 2!\ \ 2!} = 210\] ways.
+      </p>
+
+      <h4>EXAMPLE K</h4>
+      <p>In how many ways can the set of nucleotides
+      \(\{A, A, G, G, G, G, C, C, C\}\) be arranged in a sequence of nine letters?
+      </p>
+
+      <p>Proposition C can be applied by realizing that this problem can be cast
+      as determining the number of ways that the nine positions in the sequence
+      can be divided into subgroups of sizes two, four, and three
+      (the locations of the letters A, G, and C):
+      \[\binom{9}{2\ \ 4\ \ 3} = \frac{9!}{2!\ \ 4!\ \ 3!} = 1260\]
+      </p>
+    </section>
+    <nav>
+      <p>
+        [<a href="ch1.2.html">prev</a>]
+        [<a href="intro.html">contents</a>]
+        [<a href="../../index.html">home</a>]
+        [<a href="ch1.4.html">next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>

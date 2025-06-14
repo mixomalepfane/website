@@ -31,6 +31,8 @@ h2 {
 
 h3 {
     font-size: 1.2em;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.25em;
 }
 
 .katex-display {
@@ -130,3 +132,15 @@ th {
     background: #eee;
 }
 
+ol {
+    counter-reset: item;
+}
+
+li {
+    display: block;
+}
+
+li::before {
+    counter-increment: item;
+    content: counters(item, ".") ". ";
+}

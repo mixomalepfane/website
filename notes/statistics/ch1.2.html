@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistics</title>
+  <link rel="stylesheet" href="../../css/statistics/style.css"/>
+  <link rel="stylesheet" href="../../css/katex.min.css" />
+  <script defer src="../../js/katex.min.js"></script>
+  <script defer src="../../js/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '\\[', right: '\\]', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false}
+      ]
+    });">
+  </script>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1><a href="intro.html"> <</a> Chapter 1: Probability</h1>
+    </header>
+
+    <section id="Topic2">
+      <h2>1.2. Probability Measures</h2>
+      <p>A <b>probability measure</b> on \(\Omega\) is a function \(P\) from
+      subsets of \(\Omega\) to the real numbers that satisﬁes the
+      following axioms:
+      </p>
+      <ul>
+        <li> \(P(\Omega) = 1\)</li>
+        since \(\Omega\) consists of all possible outcomes.<br><br>
+        <li> If \(A \sub \Omega\) , then \(P(A) \geq 0\)</li>
+        meaning that a probability is nonnegative.<br><br>
+        <li> If \(A_1\) and \(A_2\) are disjoint, then
+          \[P(A_1 \cup A_2) = P(A_1) + P(A_2)\]
+          More generally, if \(A_1, A_2, ..., A_n, ...\) are
+          mutually disjoint, then
+          \[P\biggl(\cup_{i\ =\ 1}^{\infty} A_i \biggr) =
+          \sum_{i\ =\ 1}^{\infty} P(A_i)\]
+        </li>
+      </ul>
+
+      <h3>Properties of probability measures</h3>
+      <p>
+      1. \(\ \ P(A^c\ ) = 1 - P(A\ )\)<br>
+        <b>Proof</b>: Since \(A\) and \(A^c\) are disjoint
+        \[A \cup A^c = \Omega\]
+        \[P(A \cup A^c\ ) = P(\Omega)\]
+        \[P(A\ ) + P(A^c\ ) = 1\]
+        \[P(A^c\ ) = 1 - P(A\ )\]
+      </p>
+
+      <p>2. \(\ \ P(\empty) = P(\Omega^c\ )\)<br>
+        <b>Proof</b>:
+        \[\empty = \Omega^c\]
+        \[P(\empty) = P(\Omega^c\ )\]
+      </p>
+
+      <p>3. \(\ \ \) If \(A \sub B\ \), then \(P(A\ ) \leq P(B\ )\)<br>
+      This property states that if \(B\) occurs whenever \(A\) occurs,
+      then \(P(A\ ) \leq P(B\ )\)<br><b>Proof</b>:
+      \[B = A \cup (B \cap A^c)\]
+      \[P(B\ ) = P(A \cup (B \cap A^c))\]
+      \[P(B\ ) = P(A\ ) + P(B \cap A^c)\]
+      \[P(A\ ) = P(B\ ) - P(B \cap A\ ) \le P(B\ )\]
+      </p>
+
+      <p>4. \(\ \ P(A \cup B\ ) = P(A\ ) + P(B\ ) - P(A \cap B\ )\)
+      <br><b>Proof</b>:
+      \[C = A \cap B^c\]
+      \[D = A \cap B\]
+      \[E = A^c \cap B\]
+      </p>
+      <div class="container">
+        <img src="../../images/statistics/f1.2a.png" alt="figure 1.2a" class="figures"/>
+        <img src="../../images/statistics/f1.2b.png" alt="figure 1.2b" class="figures"/>
+      </div>
+      <p>
+      \[P(A \cup B\ ) = P(C\ ) + P(D\ ) + P(E\ )\]
+      Also, \(A = C \cup D\) , and \(C\) and \(D\) are disjoint.
+      So \[P(A\ ) = P(C\ ) + P(D\ )\]
+      Similarly, \[P(B\ ) = P(D\ ) + P(E\ )\]
+      Putting these results together, we see that
+      \[P(A\ ) + P(B\ ) = P(C\ ) + P(E\ ) + 2P(D\ )\]
+      \[P(A\ ) + P(B\ ) = [P(C\ ) + P(E\ ) + P(D\ )] + P(D\ )\]
+      \[P(A\ ) + P(B\ ) = P(A \cup B\ ) + P(D\ )\]
+      or \[P(A \cup B\ ) = P(A\ ) + P(B\ ) - P(D\ )\]
+      \[P(A \cup B\ ) = P(A\ ) + P(B\ ) - P(A \cap B\ )\]
+      </p>
+    </section>
+
+    <nav>
+      <p>
+        [<a href="ch1.1.html">prev</a>]
+        [<a href="intro.html">contents</a>]
+        [<a href="../../index.html">home</a>]
+        [<a href="ch1.3.html">next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>
