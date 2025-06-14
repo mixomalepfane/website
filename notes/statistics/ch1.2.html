@@ -25,72 +25,68 @@
       <h1><a href="intro.html"> <</a> Chapter 1: Probability</h1>
     </header>
 
-    <section id="Topic2">
+    <section>
       <h2>1.2. Probability Measures</h2>
       <p>A <b>probability measure</b> on \(\Omega\) is a function \(P\) from
       subsets of \(\Omega\) to the real numbers that satisﬁes the
       following axioms:
       </p>
-      <ul>
-        <li> \(P(\Omega) = 1\)</li>
-        since \(\Omega\) consists of all possible outcomes.<br><br>
-        <li> If \(A \sub \Omega\) , then \(P(A) \geq 0\)</li>
-        meaning that a probability is nonnegative.<br><br>
-        <li> If \(A_1\) and \(A_2\) are disjoint, then
-          \[P(A_1 \cup A_2) = P(A_1) + P(A_2)\]
-          More generally, if \(A_1, A_2, ..., A_n, ...\) are
-          mutually disjoint, then
-          \[P\biggl(\cup_{i\ =\ 1}^{\infty} A_i \biggr) =
-          \sum_{i\ =\ 1}^{\infty} P(A_i)\]
-        </li>
-      </ul>
+
+      <p>Since \(\Omega\) consists of all possible outcomes,\[P(\Omega) = 1\]
+      If \(A \sub \Omega\) , then \[P(A) \geq 0\]
+      If \(A_1\) and \(A_2\) are disjoint, then \[P(A_1 \cup A_2) = P(A_1) + P(A_2)\]
+      More generally, if \(A_1, A_2, ..., A_n, ...\) are mutually disjoint, then
+      \[P\biggl(\cup_{i\ =\ 1}^{\infty} A_i \biggr) = \sum_{i\ =\ 1}^{\infty} P(A_i)\]
+      </p>
 
       <h3>Properties of probability measures</h3>
+      <p>The following properties of probability measures are consequences of the axioms.
+      </p>
+
+      <h4>Property A</h4>
+      <p>\[P(A^c\ ) = 1 - P(A\ )\]</p>
+      <h4>Property B</h4>
+      <p>\[P(\empty) = P(\Omega^c\ )\]</p>
+      <h4>Property C</h4>
+      <p>If \[\ A \sub B\] then \[P(A\ ) \leq P(B\ )\]
+      this property states that if \(B\) occurs whenever \(A\) occurs.
+      </p>
+ 
+      <h4>Property D</h4>
+      <p>\[P(A \cup B\ ) = P(A\ ) + P(B\ ) - P(A \cap B\ )\]
+      </p>
+
+      <h3>Example A</h3>
+      <p>Consider two events, \(A\) and \(B\).
+      Where \(P(A\ ) = \frac{1}{4}\) and \(P(B\ ) = \frac{1}{2}\) , then
+      </p>
+      
       <p>
-      1. \(\ \ P(A^c\ ) = 1 - P(A\ )\)<br>
-        <b>Proof</b>: Since \(A\) and \(A^c\) are disjoint
-        \[A \cup A^c = \Omega\]
-        \[P(A \cup A^c\ ) = P(\Omega)\]
-        \[P(A\ ) + P(A^c\ ) = 1\]
-        \[P(A^c\ ) = 1 - P(A\ )\]
+      \(P(A \cap B\ )\) \[= P(A) * P(B)\]
+      \[= \frac{1}{4} * \frac{1}{2}\]
+      \[= \frac{1}{8}\]
       </p>
 
-      <p>2. \(\ \ P(\empty) = P(\Omega^c\ )\)<br>
-        <b>Proof</b>:
-        \[\empty = \Omega^c\]
-        \[P(\empty) = P(\Omega^c\ )\]
-      </p>
-
-      <p>3. \(\ \ \) If \(A \sub B\ \), then \(P(A\ ) \leq P(B\ )\)<br>
-      This property states that if \(B\) occurs whenever \(A\) occurs,
-      then \(P(A\ ) \leq P(B\ )\)<br><b>Proof</b>:
-      \[B = A \cup (B \cap A^c)\]
-      \[P(B\ ) = P(A \cup (B \cap A^c))\]
-      \[P(B\ ) = P(A\ ) + P(B \cap A^c)\]
-      \[P(A\ ) = P(B\ ) - P(B \cap A\ ) \le P(B\ )\]
-      </p>
-
-      <p>4. \(\ \ P(A \cup B\ ) = P(A\ ) + P(B\ ) - P(A \cap B\ )\)
-      <br><b>Proof</b>:
-      \[C = A \cap B^c\]
-      \[D = A \cap B\]
-      \[E = A^c \cap B\]
-      </p>
-      <div class="container">
-        <img src="../../images/statistics/f1.2a.png" alt="figure 1.2a" class="figures"/>
-        <img src="../../images/statistics/f1.2b.png" alt="figure 1.2b" class="figures"/>
-      </div>
       <p>
-      \[P(A \cup B\ ) = P(C\ ) + P(D\ ) + P(E\ )\]
-      Also, \(A = C \cup D\) , and \(C\) and \(D\) are disjoint.
-      So \[P(A\ ) = P(C\ ) + P(D\ )\]
-      Similarly, \[P(B\ ) = P(D\ ) + P(E\ )\]
-      Putting these results together, we see that
-      \[P(A\ ) + P(B\ ) = P(C\ ) + P(E\ ) + 2P(D\ )\]
-      \[P(A\ ) + P(B\ ) = [P(C\ ) + P(E\ ) + P(D\ )] + P(D\ )\]
-      \[P(A\ ) + P(B\ ) = P(A \cup B\ ) + P(D\ )\]
-      or \[P(A \cup B\ ) = P(A\ ) + P(B\ ) - P(D\ )\]
+      \(P(A \cup B\ )\)
+      \[= P(A) + P(B) - P(A \cap B)\]
+      \[= \frac{1}{4} + \frac{1}{2} - \frac{1}{8}\]
+      \[= \frac{5}{8}\]
+      </p>
+      \(P(A^c\ )\)
+      \[= 1 - P(B\ )\]
+      \[= 1 - \frac{1}{4}\]
+      \[= \frac{3}{4}\]
+      </p>
+
+      <h3>EXAMPLE B</h3>
+      <p>Suppose that a fair coin is thrown twice. Let \(A\) denote the event of heads
+      on the ﬁrst toss, and let \(B\) denote the event of heads on the second toss.
+      The sample space is \[\Omega = \{hh, ht, th, tt\}\]
+      The probability that heads comes up on the ﬁrst toss or on the second toss is
       \[P(A \cup B\ ) = P(A\ ) + P(B\ ) - P(A \cap B\ )\]
+      \[= \frac{2}{4} + \frac{2}{4} - \frac{1}{4}\]
+      \[= \frac{3}{4}\]
       </p>
     </section>
 
