@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Programming</title>
+  <link rel="stylesheet" href="../../css/style.css"/>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1><a href="intro.html"> <</a> Chapter 1 : Overview</h1>
+    </header>
+
+    
+    <section>
+      <h2>1.1. Memory Model</h2>
+      <p>The x86_64 architecture memory model is designed to allow system software
+      to manage application software and associated data in a secure fashion.
+      The memory model is backward-compatible with the legacy memory model.
+      </p>
+      
+      <p>Hardware-translation mechanisms are provided to map addresses between
+      virtual-memory space and physical-memory space. The translation mechanisms
+      allow system software to relocate applications and data transparently,
+      either anywhere in physical-memory space, or in areas on the system
+      hard drive managed by the operating system.
+      </p>
+
+      <h3>1.1.1 Memory Addressing</h3>
+      <p>The x86_64 architecture supports address relocation. To do this, several
+      types of addresses are needed to completely describe memory organization.
+      Specifically, four types of addresses are defined by the x86_64 architecture:
+      </p>
+
+      <ul>
+        <li>Logical addresses</li>
+        <li>Effective addresses</li>
+        <li>Linear (virtual) addresses</li>
+        <li>Physical addresses</li>
+      </ul>
+
+      <h4>Logical Addresses</h4>
+      <p>A <i>logical address</i> is a reference into a segmented-address space.
+      It is comprised of the segment selector and the effective address.
+      Notationally, a logical address is represented as
+      </p>
+      <p><i>Logical Address = Segment Selector : Offset</i></p>
+
+      <p>The segment selector specifies an entry in either the global or local
+      descriptor table. The specified descriptor-table entry describes the segment
+      location in virtual-address space, its size, and other characteristics.
+      The effective address is used as an offset into the segment specified
+      by the selector.
+      </p>
+
+      <p>Logical addresses are often referred to as <i>far pointers</i>.
+      Far pointers are used in software addressing when the segment reference
+      must be explicit (i.e., a reference to a segment outside the current segment).
+      </p>
+
+      <h4>Effective Addresses</h4>
+      <p>The offset into a memory segment is referred to as an effective address.
+      Effective addresses are formed by adding together elements comprising
+      a base value, a scaled-index value, and a displacement value.
+      The effective-address computation is represented by the equation
+      </p>
+      <p><i>Effective Address = Base + (Scale x Index) + Displacement</i></p>
+
+      <p>The elements of an effective-address computation are defined as follows:</p>
+      <ul>
+        <li><i>Base</i> — A value stored in any general-purpose register.</li>
+        <li><i>Scale</i> — A positive value of 1, 2, 4, or 8.</li>
+        <li><i>Index</i> — A two’s-complement value stored in any general-purpose
+          register.</li>
+        <li><i>Displacement</i> — An 8-bit, 16-bit, or 32-bit two’s-complement
+          value encoded as part of the instruction.</li>
+      </ul>
+
+      <p>Effective addresses are often referred to as <i>near pointers</i>.
+      A near pointer is used when the segment selector is known implicitly
+      or when the flat-memory model is used.
+      </p>
+
+      <h4>Linear (Virtual) Addresses</h4>
+      <p>The segment-selector portion of a logical address specifies a
+      segment-descriptor entry in either the global or local descriptor table.
+      The specified segment-descriptor entry contains the segment-base address,
+      which is the starting location of the segment in linear-address space.
+      A <i>linear address</i> is formed by adding the segment-base address
+      to the effective address (segment offset), which creates a reference
+      to any byte location within the supported linear-address space.
+      </p>
+
+      <p><i>Linear Address = Segment Base Address + Effective Address</i></p>
+
+      <h4>Physical Addresses</h4>
+      <p>A <i>physical address</i> is a reference into the physical-address space,
+      typically main memory. Physical addresses are translated from virtual
+      addresses using page-translation mechanisms. When the paging mechanism
+      is not enabled, the virtual (linear) address is used as the physical address.
+      </p>
+
+      <h3>1.1.2 Memory Organization</h3>
+      <p>The x86_64 architecture organizes memory into <i>virtual memory</i> and
+      <i>physical memory</i>. Virtual-memory and physical-memory spaces can be
+      (and usually are) different in size. Generally, the virtual-address
+      space is much larger than physical-address memory.
+      </p>
+
+      <p>System software relocates applications and data between physical memory
+      and the system hard disk to make it appear that much more memory is available
+      than really exists. System software then uses the hardware memory-management
+      mechanisms to map the larger virtual-address space into the smaller
+      physical-address space.
+      </p>
+
+      <h4>Virtual Memory</h4>
+      <p>Software uses virtual addresses to access locations within the
+      virtual-memory space. System software is responsible for managing the
+      relocation of applications and data in virtual-memory space using
+      segment-memory management and for mapping virtual memory to physical
+      memory through the use of page translation.
+      </p>
+
+      <p>The x86_64 architecture supports different virtual-memory sizes using
+      the following address-translation modes:</p>
+      <ul>
+        <li><i>Protected Mode</i> — This mode supports 4 gigabytes of virtual-address
+          space using 32-bit virtual addresses.</li>
+        <li><i>Long Mode</i> — This mode supports 16 exabytes of virtual-address
+          space using 64-bit virtual addresses.</li>
+      </ul>
+
+      <h4>Physical Memory</h4>
+      <p>Physical addresses are used to directly access main memory.
+      For a particular computer system, the size of the available physical-address
+      space is equal to the amount of main memory installed in the system.
+      The maximum amount of physical memory accessible depends on the
+      processor implementation and on the address-translation mode.
+      </p>
+
+      <p>The x86_64 architecture supports varying physical-memory sizes using
+      the following address-translation modes:
+      </p>
+      <ul>
+        <li><i>Real-Address Mode</i> — This mode, also called real mode, supports
+          1 megabyte of physical-address space using 20-bit physical addresses.
+          Real mode is available only from legacy mode.</li>
+        <li><p><i>Legacy Protected Mode</i> — This mode supports several different
+          address-space sizes, depending on the translation mechanism used
+          and whether extensions to those mechanisms are enabled.
+          </p>
+          
+          <p>Legacy protected mode supports 4 gigabytes of physical-address space
+          using 32-bit physical addresses. Both segment translation can be used to
+          access the physical address space, when the processor is running in
+          legacy protected mode.</p>
+          
+          <p>When the physical-address size extensions (PAE) are enabled,
+          the page-translation mechanism can be extended to support 52-bit physical
+          addresses. 52-bit physical addresses allow up to 4 petabytes of
+          physical-address space to be supported.
+          </p>
+        </li>
+        <li><i>Long Mode</i> — This mode is unique to the x86_64 architecture and
+          supports up to 4 petabytes of physical-address space using
+          52-bit physical addresses. Long mode requires the use of
+          page-translation and the physical-address size extensions (PAE).
+        </li>
+      </ul>
+
+      <h3>1.1.3 Canonical Address Form</h3>
+      <p>Long mode defines 64 bits of virtual-address space, but processor
+      implementations can support less. Although some processor implementations
+      do not use all 64 bits of the virtual address, they all check bits 63 through
+      the most-significant implemented bit to see if those bits are all zeros
+      or all ones. An address that complies with this property is in
+      <i>canonical address form</i>.
+      </p>
+
+      <p>In most cases, a virtual-memory reference that is not in canonical form
+      causes a general-protection exception (#GP) to occur. However, implied stack
+      references where the stack address is not in canonical form causes a
+      stack exception (#SS) to occur. Implied stack references include all push
+      and pop instructions, and any instruction using RSP or RBP as a base register.
+      </p>
+
+    </section>
+    <nav>
+      <p>
+        [<a href="intro.html">prev</a>]
+        [<a href="intro.html">contents</a>]
+        [<a href="../../index.html">home</a>]
+        [<a href="ch1.2.html">next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>
