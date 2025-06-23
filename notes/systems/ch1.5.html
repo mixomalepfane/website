@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Programming</title>
+  <link rel="stylesheet" href="../../css/systems/style.css"/>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1><a href="intro.html"> <</a> Chapter 1 : Overview</h1>
+    </header>
+
+    
+    <section>
+      <h2>1.5. System Data Structures</h2>
+      <p>System data structures are created and maintained by system software for use by the
+      processor when running in protected mode. A processor running in protected mode uses
+      these data structures to manage memory and protection, and to store program-state
+      information when an interrupt or task switch occurs. The system-data structures include:
+      </p>
+
+      <h4>Descriptors</h4>
+      <p>A descriptor provides information about a segment to the processor, such as its location,
+      size and privilege level. A special type of descriptor, called a gate, is used to provide
+      a code selector and entry point for a software routine. Any number of descriptors can be
+      defined, but system software must at a minimum create a descriptor for the currently
+      executing code segment and stack segment.
+      </p>
+
+      <h4>Descriptor Tables</h4>
+      <p>As the name implies, descriptor tables hold descriptors. The global-descriptor table
+      holds descriptors available to all programs, while a local-descriptor table holds
+      descriptors used by a single program. The interrupt-descriptor table holds only gate
+      descriptors used by interrupt handlers. System software must initialize the
+      global-descriptor and interrupt-descriptor tables, while use of the local-descriptor
+      table is optional.
+      </p>
+        
+      <h4>Task-State Segment</h4>
+      The task-state segment is a special segment for holding processor-state information for a
+      specific program, or task. It also contains the stack pointers used when switching to
+      more-privileged programs. The hardware multitasking mechanism uses the state information
+      in the segment when suspending and resuming a task. Calls and interrupts that switch stacks
+      cause the stack pointers to be read from the task-state segment. System software must create
+      at least one task-state segment, even if hardware multitasking is not used.
+      </p>
+
+      <h4>Page-Translation Tables</h4>
+      <p>Use of page translation is optional in protected mode, but it is required in long mode.
+      A four-level page-translation data structure is provided to allow long-mode operating
+      systems to translate a 64-bit virtual-address space into a 52-bit physical-address space.
+      Legacy protected mode can use two- or three-level page-translation data structures.
+      </p>
+    </section>
+    <nav>
+      <p>
+        [<a href="ch1.4.html">prev</a>]
+        [<a href="intro.html">contents</a>]
+        [<a href="../../index.html">home</a>]
+        [<a href="ch1.6.html">next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>

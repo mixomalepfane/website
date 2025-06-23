@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Programming</title>
+  <link rel="stylesheet" href="../../css/systems/style.css"/>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1><a href="intro.html"> <</a> Chapter 1 : Overview</h1>
+    </header>
+
+    
+    <section>
+      <h2>1.4. System Registers</h2>
+      <p>System software uses these registers to, among other things, manage the
+      processor operating environment, define system resource characteristics,
+      and to monitor software execution. With the exception of the RFLAGS register,
+      system registers can be read and written only from privileged software.
+      </p>
+
+      <p>Except for the descriptor-table registers and task register, the x86_64
+      architecture defines all system registers to be 64-bits wide. The descriptor
+      table and task registers are defined by the x86_64 architecture to include
+      64-bit base-address fields, in addition to their other fields.
+      </p>
+      <ul>
+        <li>
+          <p><i>Control Registers</i> — These registers are used to control system
+          operation and some system features.</p>
+          <table>
+            <tr><th>Control Registers</th></tr>
+            <tr><td>CR0</td></tr>
+            <tr><td>CR2</td></tr>
+            <tr><td>CR3</td></tr>
+            <tr><td>CR4</td></tr>
+            <tr><td>CR8</td></tr>
+          </table>
+        </li>
+        <li>
+          <p><i>System-Flags Register</i> — The RFLAGS register contains system-status
+          flags and masks. It is also used to enable virtual-8086 mode and to
+          control application access to I/O devices and interrupts.</p>
+          <table>
+            <tr><th>System-Flags Register</th></tr>
+            <tr><td>RFLAGS</td></tr>
+          </table>
+        </li>
+        <li>
+          <p><i>Descriptor-Table Registers</i> — These registers contain the location
+          and size of descriptor tables stored in memory. Descriptor tables hold
+          segmentation data structures used in protected mode.</p>
+          <table>
+            <tr><th>Descriptor-Table Registers</th></tr>
+            <tr><td>GDTR</td></tr>
+            <tr><td>IDTR</td></tr>
+            <tr><td>LDTR</td></tr>
+          </table>
+        </li>
+        <li>
+          <p><i>Task Register</i> — The task register contains the location and size
+          in memory of the task-state segment. The hardware-multitasking mechanism
+          uses the task-state segment to hold state information for a given task.
+          The TSS also holds other data, such as the inner-level stack pointers
+          used when changing to a higher privilege level.</p>
+          <table>
+            <tr><th>Task Register</th></tr>
+            <tr><td>TR</td></tr>
+          </table>
+        </li>
+        <li>
+          <p><i>Debug Registers</i> — Debug registers are used to control the
+          software-debug mechanism, and to report information back to a debug
+          utility or application.</p>
+          <table>
+            <tr><th>Debug Registers</th></tr>
+            <tr><td>DR0</td></tr>
+            <tr><td>DR1</td></tr>
+            <tr><td>DR2</td></tr>
+            <tr><td>DR3</td></tr>
+            <tr><td>DR6</td></tr>
+            <tr><td>DR7</td></tr>
+          </table>
+        </li>
+      </ul>
+
+      <p>Also defined as system registers are a number of model-specific registers
+      included in the x86_64 architectural definition
+      </p>
+      <ul>
+        <li>
+          <p><i>Extended-Feature-Enable Register</i> — The EFER register is used
+          to enable and report status on special features not controlled by the CRn
+          control registers. In particular, EFER is used to control activation of
+          long mode.</p>
+          <table>
+            <tr><th>Extended-Feature-Enable Register</th></tr>
+            <tr><td>EFER</td></tr>
+          </table>
+        </li>
+        <li>
+          <p><i>System-Configuration Register</i> — The SYSCFG register is used to
+          enable and configure system-bus features.</p>
+          <table>
+            <tr><th>System-Configuration Register</th></tr>
+            <tr><td>SYSCFG</td></tr>
+          </table>
+        </li>
+        <li>
+          <p><i>System-Linkage Registers</i> — These registers are used by
+          system-linkage instructions to specify operating-system entry points,
+          stack locations, and pointers into system-data structures.</p>
+          <table>
+            <tr><th>System-Linkage Registers</th></tr>
+            <tr><td>STAR</td></tr>
+            <tr><td>LSTAR</td></tr>
+            <tr><td>CSTAR</td></tr>
+            <tr><td>SFMASK</td></tr>
+            <tr><td>FS.base</td></tr>
+            <tr><td>GS.base</td></tr>
+            <tr><td>KernelGSbase</td></tr>
+            <tr><td>SYSENTER_CS</td></tr>
+            <tr><td>SYSENTER_ESP</td></tr>
+            <tr><td>SYSENTER_EIP</td></tr>
+          </table>
+        </li>
+        <li>
+          <p><i>Memory-Typing Registers</i> — Memory-typing registers can be used
+          to characterize (type) system memory. Typing memory gives system software
+          control over how instructions and data are cached, and how memory reads
+          and writes are ordered.</p>
+          <table>
+            <tr><th>Memory-Typing Registers</th></tr>
+            <tr><td>MTRRcap</td></tr>
+            <tr><td>MTRRdefType</td></tr>
+            <tr><td>MTRRphysBasen</td></tr>
+            <tr><td>MTRRphysMaskn</td></tr>
+            <tr><td>MTRRfixn</td></tr>
+            <tr><td>PAT</td></tr>
+            <tr><td>TOP_MEM</td></tr>
+            <tr><td>TOP_MEM2</td></tr>
+          </table>
+        </li>
+        <li>
+          <p><i>Debug-Extension Registers</i> — These registers control additional
+          software-debug reporting features.</p>
+          <table>
+            <tr><th>Debug-Extension Registers</th></tr>
+            <tr><td>DebugCtl</td></tr>
+            <tr><td>LastBranchFromIP</td></tr>
+            <tr><td>LastBranchToIP</td></tr>
+            <tr><td>LastIntFromIP</td></tr>
+            <tr><td>LastIntToIP</td></tr>
+          </table>
+        </li>
+        <li>
+          <p><i>Performance-Monitoring Registers</i> — Performance-monitoring
+          registers are used to count processor and system events, or the duration
+          of events.</p>
+          <table>
+            <tr><th>Performance-Monitoring Registers</th></tr>
+            <tr><td>TSC</td></tr>
+            <tr><td>PerfEvtSeln</td></tr>
+            <tr><td>PerfCtrn</td></tr>
+          </table>
+        </li>
+        <li>
+          <p><i>Machine-Check Registers</i> — The machine-check registers control
+          the response of the processor to non-recoverable failures. They are also
+          used to report information on such failures back to system utilities
+          designed to respond to such failures.</p>
+          <table>
+            <tr><th>Machine-Check Registers</th></tr>
+            <tr><td>MCG_CAP</td></tr>
+            <tr><td>MCG_STAT</td></tr>
+            <tr><td>MCG_CTL</td></tr>
+            <tr><td>MCi_CTL</td></tr>
+            <tr><td>MCi_STATUS</td></tr>
+            <tr><td>MCi_ADDR</td></tr>
+            <tr><td>MCi_MISC</td></tr>
+          </table>
+        </li>
+      </ul>
+ 
+    </section>
+    <nav>
+      <p>
+        [<a href="ch1.3.html">prev</a>]
+        [<a href="intro.html">contents</a>]
+        [<a href="../../index.html">home</a>]
+        [<a href="ch1.5.html">next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>

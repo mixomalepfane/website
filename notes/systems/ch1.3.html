@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Programming</title>
+  <link rel="stylesheet" href="../../css/systems/style.css"/>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1><a href="intro.html"> <</a> Chapter 1 : Overview</h1>
+    </header>
+
+    
+    <section>
+      <h2>1.3. Operating Modes</h2>
+      <p>The legacy x86 architecture provides four operating modes or environments
+      that support varying forms of memory management, virtual-memory and
+      physical-memory sizes, and protection:
+      </p>
+      <ul>
+        <li>Real Mode</li>
+        <li>Protected Mode</li>
+        <li>Virtual-8086 Mode</li>
+        <li>System Management Mode</li>
+      </ul>
+
+      <p>The x86_6464 architecture supports all these legacy modes, and it adds
+      a new operating mode called long mode.
+      </p>
+      Operating Modes of the x86_64 Architecture
+      <div class="container">
+        <img src="../../images/systems/f1.6.png" alt="figure 1.6" class="figures3"/>
+      </div>
+
+      <h3>1.3.1 Long Mode</h3>
+      <p>Long mode consists of two submodes: <i>64-bit mode</i> and
+      <i>compatibility mode</i>. 64-bit mode supports several new features,
+      including the ability to address 64-bit virtual-address space. Compatibility
+      mode provides binary compatibility with existing 16-bit and 32-bit
+      applications when running on 64-bit system software.
+      </p>
+
+      <h3>1.3.2 64-Bit Mode</h3>
+      <p>64-bit mode, a submode of long mode, provides support for 64-bit system
+      software and applications by adding the following features:
+      </p>
+      <ul>
+        <li>64-bit virtual addresses (processor implementations can have fewer).</li>
+        <li>Access to General Purpose Register bits 63:32</li>
+        <li>Access to additional registers through the REX, VEX, and XOP instruction
+          prefixes:
+          <ul>
+            <li>eight additional GPRs (R8–R15)</li>
+            <li>eight additional Streaming SIMD Extension (SSE) registers (YMM/XMM8–15)</li>
+          </ul>
+        </li>
+        <li>64-bit instruction pointer (RIP).</li>
+        <li>New RIP-relative data-addressing mode.</li>
+        <li>Flat-segment address space with single code, data, and stack space.</li>
+      </ul>
+
+      <p>The mode is enabled by the system software on an individual code-segment
+      basis. Although code segments are used to enable and disable 64-bit mode,
+      the legacy segmentation mechanism is largely disabled. Page translation is
+      required for memory management purposes. Because 64-bit mode supports a
+      64-bit virtual-address space, it requires 64-bit system software and
+      development tools.
+      </p>
+
+      <p>In 64-bit mode, the default address size is 64 bits, and the default
+      operand size is 32 bits. The defaults can be overridden on an
+      instruction-by-instruction basis using instruction prefixes.
+      </p>
+
+      <h3>1.3.3 Compatibility Mode</h3>
+      <p>Compatibility mode, a submode of long mode, allows system software to
+      implement binary compatibility with existing 16-bit and 32-bit x86
+      applications. It allows these applications to run, without recompilation,
+      under 64-bit system software in long mode.
+      </p>
+
+      <p>In compatibility mode, applications can only access the first 4 GB of
+      virtual-address space. Standard x86 instruction prefixes toggle between
+      16-bit and 32-bit address and operand sizes.
+      </p>
+
+      <p>Compatibility mode, like 64-bit mode, is enabled by system software on
+      an individual code-segment basis. Unlike 64-bit mode, however, segmentation
+      functions the same as in the legacy x86 architecture, using 16-bit or
+      32-bit protected-mode semantics. From an application viewpoint, compatibility
+      mode looks like a legacy protected-mode environment. From a system-software
+      viewpoint, the long-mode mechanisms are used for address translation, interrupt
+      and exception handling, and system data-structures.
+      </p>
+
+      <h3>1.3.4 Legacy Modes</h3>
+      <p><i>Legacy mode</i> consists of three submodes:
+      <i>real mode, protected mode,</i> and <i>virtual-8086 mode</i>. Protected
+      mode can be either paged or unpaged. Legacy mode preserves binary
+      compatibility not only with existing x86 16-bit and 32-bit applications
+      but also with existing x86 16-bit and 32-bit system software.
+      </p>
+
+      <h4>Real Mode</h4>
+      <p>In this mode, also called real-address mode, the processor supports a
+      physical-memory space of 1 MB and operand sizes of 16-bits (default) or
+      32-bits (with instruction prefixes). Interrupt handling and address
+      generation are nearly identical to the 80286 processor's real mode. Paging
+      is not supported. All software runs at privilege level 0.</p>
+
+      <p>Real mode is entered after reset or processor power-up. The mode is not
+      supported when the processor is operating in long mode because long mode
+      requires that paged protected mode be enabled.
+      </p>
+
+      <h4>Protected Mode</h4>
+      <p>In this mode, the processor supports virtual-memory and physical-memory
+      spaces of 4 GB and operand sizes of 16 or 32 bits. All segment translation,
+      segment protection, and hardware multitasking functions are available.
+      </p>
+
+      <p>System software can use segmentation to relocate effective addresses
+      in virtual-address space. If paging is not enabled, virtual addresses
+      are equal to physical addresses. Paging can be optionally enabled to allow
+      translation of virtual addresses to physical addresses and to use the
+      page-based memory-protection mechanisms.
+      </p>
+
+      <p>In protected mode, software runs at privilege levels 0, 1, 2, or 3.
+      Typically, application software runs at privilege level 3, the system
+      software runs at privilege levels 0 and 1, and privilege level 2 is available
+      to system software for other uses.
+      </p>
+
+      <h3>Virtual-8086 Mode</h3>
+      <p>Virtual-8086 mode allows system software to run 16-bit real-mode software
+      on a virtualized-8086 processor. In this mode, software written for the 8086,
+      8088, 80186, or 80188 processor can run as a privilege-level-3 task under
+      protected mode. The processor supports a virtual-memory space of 1 MB and
+      operand sizes of 16 bits (default) or 32 bits (with instruction prefixes),
+      and it uses real-mode address translation.
+      </p>
+
+      <p>Virtual-8086 mode is not supported when the processor is operating in
+      long mode. When long mode is enabled, any attempt to enable virtual-8086
+      mode is silently ignored.
+      </p>
+
+      <h3>1.3.5 System Management Mode (SMM)</h3>
+      <p>System management mode (SMM) is an operating mode designed for
+      system-control activities that are typically transparent to conventional
+      system software. Power management is one popular use for system management
+      mode. SMM is primarily targeted for use by platform firmware and specialized
+      low-level device drivers. The code and data for SMM are stored in the
+      SMM memory area, which is isolated from main memory by the SMM output signal.
+      </p>
+
+      <p>SMM is entered by way of a system management interrupt (SMI). Upon
+      recognizing an SMI, the processor enters SMM and switches to a separate
+      address space where the SMM handler is located and executes. In SMM, the
+      processor supports real-mode addressing with 4 GB segment limits and
+      default operand, address, and stack sizes of 16 bits
+      (prefixes can be used to override these defaults).
+      </p>
+
+    </section>
+    <nav>
+      <p>
+        [<a href="ch1.2.html">prev</a>]
+        [<a href="intro.html">contents</a>]
+        [<a href="../../index.html">home</a>]
+        [<a href="ch1.4.html">next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>

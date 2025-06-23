@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Programming</title>
+  <link rel="stylesheet" href="../../css/systems/style.css"/>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1><a href="intro.html"> <</a> Chapter 1 : Overview</h1>
+    </header>
+
+    
+    <section>
+      <h2>1.6. Interrupts</h2>
+      <p>The x86_64 architecture provides a mechanism for the processor to automatically suspend
+      (interrupt) software execution and transfer control to an interrupt handler when an
+      interrupt or exception occurs. An <i>interrupt handler</i> is privileged software designed
+      to identify and respond to the cause of an interrupt or exception, and return control back
+      to the interrupted software.
+      </p>
+
+      <p><i>Interrupts</i> can be caused when system hardware signals
+      an interrupt condition using one of the external-interrupt signals on the processor.
+      Interrupts can also be caused by software that executes an interrupt instruction.
+      <i>Exceptions</i> occur when the processor detects an abnormal condition as a result
+      of executing an instruction.
+      </p>
+
+      <p>System software not only sets up the interrupt handlers, but it must also create and
+      initialize the data structures the processor uses to execute an interrupt handler when
+      an interrupt occurs. The data structures include the <i>code-segment descriptors</i> for
+      the interrupt-handler software and any <i>data-segment descriptors</i> for data and
+      stack accesses.
+      </p>
+
+      <p><i>Interrupt-gate descriptors</i> must also be supplied. Interrupt gates point to
+      interrupt-handler code-segment descriptors, and the entry point in an interrupt handler.
+      Interrupt gates are stored in the <i>interrupt-descriptor table</i>. The code-segment and
+      data-segment descriptors are stored in the <i>global-descriptor table</i> and, optionally,
+      the <i>local-descriptor table</i>.
+      </p>
+
+      <p>When an interrupt occurs, the processor uses the interrupt vector to find the
+      appropriate interrupt gate in the interrupt-descriptor table. The gate points to the
+      interrupt-handler code segment and entry point, and the processor transfers control
+      to that location. Before invoking the interrupt handler, the processor saves information
+      required to return to the interrupted program.
+      </p>
+
+      <table>
+        Interrupts and Exceptions
+        <tr><th>Vector</th><th>Description</th></tr>
+        <tr><td>0</td><td>Integer Divide-by-Zero Exception</td></tr>
+        <tr><td>1</td><td>Debug Exception</td></tr>
+        <tr><td>2</td><td>Non-Maskable-Interrupt</td></tr>
+        <tr><td>3</td><td>Breakpoint Exception (INT 3)</td></tr>
+        <tr><td>4</td><td>Overflow Exception (INTO instruction)</td></tr>
+        <tr><td>5</td><td>Bound-Range Exception (BOUND instruction)</td></tr>
+        <tr><td>6</td><td>Invalid-Opcode Exception</td></tr>
+        <tr><td>7</td><td>Device-Not-Available Exception</td></tr>
+        <tr><td>8</td><td>Double-Fault Exception</td></tr>
+        <tr><td>9</td><td>Coprocessor-Segment-Overrun Exception (reserved in x86_64)</td></tr>
+        <tr><td>10</td><td>Invalid-TSS Exception</td></tr>
+        <tr><td>11</td><td>Segment-Not-Present Exception</td></tr>
+        <tr><td>12</td><td>Stack Exception</td></tr>
+        <tr><td>13</td><td>General-Protection Exception</td></tr>
+        <tr><td>14</td><td>Page-Fault Exception</td></tr>
+        <tr><td>15</td><td>(Reserved)</td></tr>
+        <tr><td>16</td><td>x87 Floating-Point Exception</td></tr>
+        <tr><td>17</td><td>Alignment-Check Exception</td></tr>
+        <tr><td>18</td><td>Machine-Check Exception</td></tr>
+        <tr><td>19</td><td>SIMD Floating-Point Exception</td></tr>
+        <tr><td>21</td><td>Control-Protection Exception</td></tr>
+        <tr><td>0-255</td><td>Interrupt Instructions</td></tr>
+        <tr><td>0-255</td><td>Hardware Maskable Interrupts</td></tr>
+      </table>
+
+      <p></p>
+   </section>
+    <nav>
+      <p>
+        [<a href="ch1.5.html">prev</a>]
+        [<a href="intro.html">contents</a>]
+        [<a href="../../index.html">home</a>]
+        [<a href="ch1.7.html">next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>
