@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Programming</title>
+  <link rel="stylesheet" href="../../css/systems/style.css"/>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1><a href="intro.html"> <</a> Chapter 2 : Segmented Virtual Memory</h1>
+    </header>
+
+    
+    <section>
+      <h2>2.3. Protected Mode Segmented-Memory Models</h2>
+      <p>System software can use the segmentation mechanism to support one of two
+      basic segmented-memory models: a <i>flat-memory model</i> or a 
+      <i>multi-segmented model</i>. These segmentation models are supported
+      in legacy mode and in compatibility mode.
+      </p>
+
+      <h3>2.3.1 Multi-Segmented Model</h3>
+      <p>In the multi-segmented memory model, each segment register can reference
+      a unique base address with a unique segment size. Segments can be as small
+      as a single byte or as large as 4 GB. When page translation is used,
+      multiple segments can be mapped to a single page and multiple pages can be
+      mapped to a single segment.
+      </p>
+      <div class="container">
+        <img src="../../images/systems/f1.1.png" alt="figure 1.1" class="figures3"/>
+      </div>
+
+      <p>The multi-segmented memory model provides the greatest level of
+      flexibility for system software using the segmentation mechanism.
+      </p>
+
+      <p>Compatibility mode allows the multi-segmented model to be used in support
+      of legacy software. However, in compatibility mode, the multi-segmented
+      memory model is restricted to the first 4 GB of virtual-memory space. Access
+      to virtual memory above 4 GB requires the use of 64-bit mode, which does
+      not support segmentation.
+      </p>
+
+      <h3>2.3.2 Flat-Memory Model</h3>
+      <p>The flat-memory model is the simplest form of segmentation to implement.
+      Although segmentation cannot be disabled, the flat-memory model allows
+      system software to bypass most of the segmentation mechanism. In the
+      flat-memory model, all segment-base addresses have a value of 0 and the segment
+      limits are fixed at 4GB. Clearing the segment-base value to 0 effectively
+      disables segment translation, resulting in a single segment spanning the
+      entire virtual-address space. All segment descriptors reference this single,
+      flat segment.
+      </p>
+      <div class="container">
+        <img src="../../images/systems/f1.2.png" alt="figure 1.2" class="figures2"/>
+      </div>
+
+
+      <h3>2.3.3 Segmentation in 64-Bit Mode</h3>
+      <p>In 64-bit mode, segmentation is disabled. The segment-base value is
+      ignored and treated as 0 by the segmentation hardware. Likewise, segment
+      limits and most attributes are ignored. There are a few exceptions. The
+      CS-segment DPL, D, and L attributes are used (respectively) to establish
+      the privilege level for a program, the default operand size, and whether
+      the program is running in 64-bit mode or compatibility mode.
+      </p>
+
+      <p>The FS and GS segments can be used as additional base registers in address
+      calculations, and those segments can have non-zero base-address values. This
+      facilitates addressing thread-local data and certain system-software data
+      structures. The system-segment registers are always used in 64-bit mode.
+      </p>
+
+   </section>
+    <nav>
+      <p>
+        [<a href="ch2.2.html">prev</a>]
+        [<a href="intro.html">contents</a>]
+        [<a href="../../index.html">home</a>]
+        [<a href="ch2.4.html">next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>

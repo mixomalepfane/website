@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Programming</title>
+  <link rel="stylesheet" href="../../css/systems/style.css"/>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1><a href="intro.html"> <</a> Chapter 2 : Segmented Virtual Memory</h1>
+    </header>
+
+    
+    <section>
+      <h2>2.1. Real Mode Segmentation</h2>
+      <p>After reset or power-up, the processor always initially enters real mode.
+      Protected modes are entered from real mode.
+      </p>
+
+      <p>Real mode (real-address mode), provides a physical-memory space of 1 MB.
+      In this mode, a 20-bit physical address is determined by shifting a 16-bit
+      segment selector to the left four bits and adding the 16-bit effective address.
+      </p>
+
+      <p>Each segment (CS, DS, ES, FS, GS, SS) is aligned on 16-byte boundaries.
+      The segment base is the lowest address in a given segment, and is equal to
+      the <i>segment selector * 16</i>. The POP and MOV instructions can be used to
+      load a (possibly) new segment selector into one of the segment registers.
+      </p>
+
+      <p>When this occurs, the selector is updated and the segment base is set to
+      <i>selector * 16</i>. The segment limit and segment attributes are unchanged,
+      but are normally 64 KB (the maximum allowable limit) and read/write data,
+      respectively.
+      </p>
+
+      <p>On FAR transfers, CS (code segment) selector is updated to the new value,
+      and the CS segment base is set to <i>selector * 16</i>. The CS segment limit
+      and attributes are unchanged, but are usually 64 KB and read/write,
+      respectively.
+      </p>
+
+   </section>
+    <nav>
+      <p>
+        [<a href="ch1.7.html">prev</a>]
+        [<a href="intro.html">contents</a>]
+        [<a href="../../index.html">home</a>]
+        [<a href="ch2.2.html">next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>

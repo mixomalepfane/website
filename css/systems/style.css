@@ -120,6 +120,24 @@ address {
     .container {
         padding: 0.5rem;
     }
+    
+    .figures1 {
+        width: 100px;
+        height: auto;
+        border: 2px solid #444;
+    }
+
+    .figures2 {
+        width: 200px;
+        height: auto;
+        border: 2px solid #444;
+    }
+
+    .figures3 {
+        width: 300px;
+        height: auto;
+        border: 2px solid #444;
+    }
 }
 
 nav {

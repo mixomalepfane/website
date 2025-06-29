@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Programming</title>
+  <link rel="stylesheet" href="../../css/systems/style.css"/>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1><a href="intro.html"> <</a> Chapter 2 : Segmented Virtual Memory</h1>
+    </header>
+
+    
+    <section>
+      <h2>2.4. Segmentation Data Structures and Registers</h2>
+
+      <h4>Segment Descriptors</h4>
+      <p>As the name implies, a segment descriptor describes a segment, including
+      its location in virtual-address space, its size, protection characteristics,
+      and other attributes.
+      </p>
+
+      <h4>Descriptor Tables</h4>
+      <p>Segment descriptors are stored in memory in one of three tables.
+      The global-descriptor table (GDT) holds segment descriptors that can be
+      shared among all tasks. Multiple local-descriptor tables (LDT) can be
+      defined to hold descriptors that are used by specific tasks and are not
+      shared globally. The interrupt-descriptor table (IDT) holds gate descriptors
+      that are used to access the segments where interrupt handlers are located.
+      </p>
+
+      <h4>Task-State Segment</h4>
+      <p>A task-state segment (TSS) is a special type of system segment that
+      contains task-state information and data structures for each task. For
+      example, a TSS holds a copy of the GPRs and EFLAGS register when a task
+      is suspended. A TSS also holds the pointers to privileged-software stacks
+      </p>
+
+      <h4>Segment Selectors</h4>
+      <p>Descriptors are selected for use from the descriptor tables using a
+      segment selector. A segment selector contains an index into either the
+      GDT or LDT. The IDT is indexed using an interrupt vector
+      </p>
+      <div class="container">
+        <img src="../../images/systems/f1.7.png" alt="figure 1.7" class="figures3"/>
+      </div>
+
+      <p>The following registers used by the segmentation mechanism.</p>
+      <ul>
+        <li>
+          <p><i>Segment Registers</i> — The six segment registers
+          (CS, DS, ES, FS, GS, and SS) are used to point to the user segments.
+          A segment selector selects a descriptor when it is loaded into one of
+          the segment registers. This causes the processor to automatically load
+          the selected descriptor into a software-invisible portion of the
+          segment register.</p>
+        </li>
+        
+        <li>
+          <p><i>Descriptor-Table Registers</i> — The three descriptor-table
+          registers (GDTR, LDTR, and IDTR) are used to point to the system
+          segments. The descriptor-table registers identify the virtual-memory
+          location and size of the descriptor tables.</p>
+        </li>
+
+        <li>
+          <p><i>Task Register (TR)</i> — Describes the location
+          and limit of the current task state segment (TSS).</p>
+        </li>
+      </ul>
+
+
+   </section>
+    <nav>
+      <p>
+        [<a href="ch2.3.html">prev</a>]
+        [<a href="intro.html">contents</a>]
+        [<a href="../../index.html">home</a>]
+        [<a href="ch2.5.html">next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>
