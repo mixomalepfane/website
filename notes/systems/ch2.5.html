@@ -22,6 +22,215 @@
       global and local descriptor tables.
       </p>
 
+      <i>Segment Selector</i>
+      <div class="container">
+        <img src="../../images/systems/f2.1.png" alt="figure 2.1" class="figures2"/>
+      </div>
+
+      The selector format consists of the following fields:
+      <ul>
+        <li><p><b>Selector Index Field</b> - Bits 15:3. The selector-index field
+          specifies an entry in the descriptor table. Descriptor-table entries are
+          eight bytes long, so the selector index is scaled by 8 to form a byte
+          offset into the descriptor table. The offset is then added to either
+          the global or local descriptor-table base address
+          (as indicated by the table-index bit) to form the descriptor-entry address
+          in virtual-address space.
+          </p>
+        </li>
+
+        <li><p><b>Table Indicator (TI) Bit</b> - Bit 2. The TI bit indicates which
+          table holds the descriptor referenced by the selector index. When TI=0
+          the GDT is used and when TI=1 the LDT is used. The descriptor-table base
+          address is read from the appropriate descriptor-table register and added
+          to the scaled selector index as described above.
+          </p>
+        </li>
+
+        <li><p><b>Requestor Privilege-Level (RPL) Field</b> - Bits 1:0. The RPL
+          represents the privilege level (CPL) the processor is operating under
+          at the time the selector is created. RPL is used in segment privilege-checks
+          to prevent software running at lesser privilege levels from accessing
+          privileged data.
+          </p>
+        </li>
+
+        <li><p><b>Null Selector</b> - Null selectors have a selector index of 0 and TI=0,
+          corresponding to the first entry in the GDT. However, null selectors do not
+          reference the first GDT entry but are instead used to invalidate unused segment
+          registers. A general-protection exception (#GP) occurs if a reference is
+          made to use a segment register containing a null selector in non-64-bit mode.
+          By initializing unused segment registers with null selectors software can trap
+          references to unused segments.
+          </p>
+        </li>
+      </ul>
+
+      <h3>2.5.2 Segment Registers</h3>
+      <p>Six 16-bit segment registers are provided for referencing up to six segments
+      at one time. All software tasks require segment selectors to be loaded in the
+      CS and SS registers. Use of the DS, ES, FS, and GS segments is optional,
+      but nearly all software accesses data and therefore requires a selector in
+      the DS register.
+      </p>
+
+      <table>
+        Segment Registers
+        <tr>
+          <th>Segment Register</th>
+          <th>Encoding</th>
+          <th>Segment Register Function</th>
+        </tr>
+
+        <tr>
+          <td>ES</td><td>/0</td>
+          <td>References optional data-segment descriptor entry</td>
+        </tr>
+
+        <tr>
+          <td>CS</td><td>/1</td>
+          <td>References code-segment descriptor entry</td>
+        </tr>
+
+        <tr>
+          <td>SS</td><td>/2</td>
+          <td>References stack segment descriptor entry</td>
+        </tr>
+
+        <tr>
+          <td>DS</td><td>/3</td>
+          <td>References default data-segment descriptor entry</td>
+        </tr>
+        
+        <tr>
+          <td>FS</td><td>/4</td>
+          <td>References optional data-segment descriptor entry</td>
+        </tr>
+        
+        <tr>
+          <td>GS</td><td>/5</td>
+          <td>References optional data-segment descriptor entry</td>
+        </tr>
+   
+      </table>
+
+      <p>The processor maintains a hidden portion of the segment register in addition
+      to the selector value loaded by software. This hidden portion contains the values
+      found in the descriptor-table entry referenced by the segment selector. The
+      processor loads the descriptor-table entry into the hidden portion when the segment
+      register is loaded. By keeping the corresponding descriptor-table entry in hardware,
+      performance is optimized for the majority of memory references.
+      </p>
+
+      <i>Segment-Register Format</i>
+      <div class="container">
+        <img src="../../images/systems/f2.2.png" alt="figure 2.2" class="figures2"/>
+      </div>
+
+      <h4>CS Register</h4>
+      <p>The CS register contains the segment selector referencing the current
+      code-segment descriptor entry. All instruction fetches reference the CS descriptor.
+      When a new selector is loaded into the CS register, the current-privilege level
+      (CPL) of the processor is set to that of the CS-segment descriptor-privilege
+      level (DPL).
+      </p>
+
+      <h4>Data-Segment Registers</h4>
+      <p>The DS register contains the segment selector referencing the default
+      data-segment descriptor entry. The SS register contains the stack-segment selector.
+      The ES, FS, and GS registers are optionally loaded with segment selectors
+      referencing other data segments. Data accesses default to referencing the DS
+      descriptor except in the following two cases:
+      </p>
+
+      <ul>
+        <li>The ES descriptor is referenced for string-instruction destinations.</li>
+        <li>The SS descriptor is referenced for stack operations.</li>
+      </ul>
+
+      <h3>2.5.3 Segment Registers in 64-Bit Mode</h3>
+
+      <h4>CS Register in 64-Bit Mode</h4>
+      <p>In 64-bit mode, most of the hidden portion of the CS register is ignored.
+      Only the L (long), D (default operation size), and DPL (descriptor privilege-level)
+      attributes are recognized by 64-bit mode. Address calculations assume a CS.base
+      value of 0. CS references do not check the CS.limit value, but instead check that
+      the effective address is in canonical form.
+      </p>
+
+      <h4>DS, ES, and SS Registers in 64-Bit Mode</h4>
+      <p>In 64-bit mode, the contents of the ES, DS, and SS segment registers are ignored.
+      All fields (base, limit, and attribute) in the hidden portion of the segment
+      registers are ignored.
+      </p>
+
+      <p>Address calculations in 64-bit mode that reference the ES, DS, or SS segments
+      are treated as if the segment base is 0. Instead of performing limit checks,
+      the processor checks that all virtual-address references are in canonical form.
+      </p>
+
+      <p>Neither enabling and activating long mode nor switching between 64-bit and
+      compatibility modes changes the contents of the visible or hidden portions of the
+      segment registers. These registers remain unchanged during 64-bit mode execution
+      unless explicit segment loads are performed.
+      </p>
+
+      <h4>FS and GS Registers in 64-Bit Mode</h4>
+      <p>Unlike the CS, DS, ES, and SS segments, the FS and GS segment overrides can be
+      used in 64-bit mode. When FS and GS segment overrides are used in 64-bit mode,
+      their respective base addresses are used in the effective-address (EA) calculation.
+      The complete EA calculation then becomes</p>
+
+      <p><i>(FS or GS).base + base + (scale * index) + displacement</i></p>
+
+      <p>The FS.base and GS.base
+      values are also expanded to the full 64-bit virtual-address size.
+      </p>
+      <i>FS and GS Segment-Register Format—64-Bit Mode</i>
+      <div class="container">
+        <img src="../../images/systems/f2.3.png" alt="figure 2.3" class="figures3"/>
+      </div>
+
+      <p>In 64-bit mode, FS-segment and GS-segment overrides are not checked for limit
+      or attributes. Instead, the processor checks that all virtual-address references
+      are in canonical form.
+      </p>
+
+      <p>Segment register-load instructions (MOV to Sreg and POP Sreg) load only a
+      32-bit base-address value into the hidden portion of the FS and GS segment
+      registers. The base-address bits above the low 32 bits are cleared to 0 as a
+      result of a segment-register load. When a null selector is loaded into FS or GS,
+      the contents of the corresponding hidden descriptor register are not altered.
+      </p>
+
+      <p>There are two methods to update the contents of the FS.base and GS.base hidden
+      descriptor fields. The first is available exclusively to privileged software
+      (CPL = 0). The FS.base and GS.base hidden descriptor-register fields are mapped
+      to MSRs. Privileged software can load a 64-bit base address in canonical form
+      into FS.base or GS.base using a single WRMSR instruction. The FS.base MSR address
+      is C000_0100h while the GS.base MSR address is C000_0101h.
+      </p>
+
+      <p>The second method of updating the FS and GS base fields is available to
+      software running at any privilege level (when supported by the implementation and
+      enabled by setting CR4[FSGSBASE]). The WRFSBASE and WRGSBASE instructions copy
+      the contents of a GPR to the FS.base and GS.base fields respectively. When the
+      operand size is 32 bits, the upper doubleword of the base is cleared.
+      WRFSBASE and WRGSBASE are only supported in 64-bit mode.
+      </p>
+
+      <p>The addresses written into the expanded FS.base and GS.base registers must be
+      in canonical form. Any instruction that attempts to write a non-canonical address
+      to these registers causes a general-protection exception (#GP) to occur.
+      </p>
+
+      <p>When in compatibility mode, the FS and GS overrides operate as defined by the
+      legacy x86 architecture regardless of the value loaded into the high 32 bits of
+      the hidden descriptor-register base-address field. Compatibility mode ignores
+      the high 32 bits when calculating an effective address.
+      </p>
+
+
    </section>
     <nav>
       <p>
