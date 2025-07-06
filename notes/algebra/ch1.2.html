@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linear Algebra</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/katex.min.css" />
+  <script defer src="../../js/katex.min.js"></script>
+  <script defer src="../../js/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '\\[', right: '\\]', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false}
+      ]
+    });">
+  </script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>
+        <a href="introduction.html" aria-label="Back to Introduction">&lt;</a>
+        Chapter 1: Linear Equations
+      </h1>
+    </header>
+
+    <section id="Topic2">
+      <h2>1.2. Row Reduction and Echelon Forms</h2>
+
+      <h3>Row Echelon Form</h3>
+      <p>A <b>zero row</b> in a matrix is a row where each entry in the row is zero.
+      A <b>non-zero row</b> in a matrix is a row which contains at least one
+      non-zero entry. A <b>leading entry</b> in a non-zero row is the first
+      non-zero entry in that row (reading from left to right).
+      </p>
+
+      We say that a matrix is in <b>row echelon form</b> (or <b>echelon form</b>)
+      if it satisfies the following conditions:
+      <ul>
+        <li><p>All the non-zero rows are above the zero rows.<p></li>
+        <li><p>Every leading entry in a row is in a column to the right of the
+          leading entry in the row above it.</p>
+        </li>
+        <li><p>All entries in a column below a leading entry are zeros.</p></li>
+      </ul>
+
+      We say that a matrix is in <b>reduced row echelon form</b>
+      (or <b>reduced echelon form</b>) if it is firstly in row echelon form and
+      then further satisfies the following conditions:
+      <ul>
+        <li><p>Each leading entry in a non-zero row is 1 (called a <b>leading 1</b>).</p></li>
+        <li><p>Each leading 1 is the only non-zero entry in its column.</p></li>
+      </ul>
+
+      <p><b>Theorem 1</b><br>Every matrix is row-equivalent to a unique
+      (i.e. one and only one) matrix which is in reduced row echelon form.
+      </p>
+
+      <h3>Solutions of a Linear System</h3>
+      <p>A <b>pivot position</b> of a matrix \(A\) is a position in \(A\) which
+      corresponds to the position of a leading 1 in the reduced row echelon
+      form of \(A\). A <b>pivot column</b> of \(A\) is a column of \(A\) which
+      contains a pivot position.
+      </p>
+
+      <p>The variables in a linear system which correspond to pivot
+      columns in the augmented matrix of the linear system are called
+      the <b>leading variables</b> (or the <b>basic variables</b>).
+      The remaining variables are called <b>free variables</b>.
+      </p>
+
+      <p><b>Theorem 2</b><br>
+      A linear system is consistent (i.e. has a solution) if and ony if the right-most
+      column of the augmented matrix of the system is <b>NOT</b> a pivot column,
+      that is, if and only if the augmented matrix has no row of the form
+      \[\begin{bmatrix}0 & \dots & 0 & b\end{bmatrix}\] with with b nonzero.
+      If a linear system is consistent, then the solution set contains either
+      <ul>
+        <li><p>a unique solution, if there are no free variables.</p></li>
+        <li><p>infinitely many solutions, if there is at least one free variable.</p></li>
+      </ul>
+      </p>
+   </section>
+
+
+     <nav>
+      <p>
+        [<a href="ch1.1.html">Prev</a>]
+        [<a href="intro.html">Contents</a>]
+        [<a href="../../index.html">Home</a>]
+        [<a href="ch1.3.html">Next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linear Algebra</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/katex.min.css" />
+  <script defer src="../../js/katex.min.js"></script>
+  <script defer src="../../js/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '\\[', right: '\\]', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false}
+      ]
+    });">
+  </script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>
+        <a href="introduction.html" aria-label="Back to Introduction">&lt;</a>
+        Chapter 1: Linear Equations
+      </h1>
+    </header>
+    <section id="Topic4">
+      <h2>1.4. The Matrix Equation \(A\vec{x} = \vec{b}\)</h2>
+      <h3>The Product of a Matrix and a Vector</h3>
+      <p>If \(A\) is and \(m\) x \(n\) matrix with columns
+      \(\vec{a_1}, \vec{a_2}, \dots, \vec{a_n}\) and if
+      \(\vec{x_n}\) is in \(\real^n\), then the <b>product</b> of
+      \(A\) and \(\vec{x}\), denoted by \(A\vec{x}\) ,
+      is the linear combination of the columns of \(A\) using the entries of
+      \(\vec{x}\) as the weights. That is,
+      \[A\vec{x}\ =\ \begin{vmatrix}\vec{a_1}&\vec{a_2}&\dots&\vec{a_n}\end{vmatrix}
+      \begin{vmatrix}x_1\\x_2\\ \vdots\\ x_n\end{vmatrix} \ =\ x_1\vec{a_1} +
+      x_2\vec{a_2} + \dots + x_n\vec{a_n}\]
+      </p>
+
+      <h4>Theorem 3</h4>
+      <p>If \(A\) is an \(m\) x \(n\) matrix with columns
+      \(a_1, a_2, \dots, a_n\) and if \(\vec{b}\) is in \(\real^m\),
+      then the matrix equation \[A\vec{x} = \vec{b}\]
+      has the same solutions as the vector equation
+      \[x_1\vec{a_1}+x_2\vec{a_2}+\dots+x_n\vec{b_n}=\vec{b}\]
+      which in turn has the same solutions as the linear system which
+      corresponds to the augmented matrix
+      \[\begin{vmatrix}a_1 & a_2 & \dots & a_n & \vec{b}\end{vmatrix}\]
+      We call \(A\) the <b>coefficient matrix</b> of the linear system.
+      </p>
+
+      <h3>Properties of the Coefficient Matrix</h3>
+      <ul>
+        <li>For each \(\vec{b}\in\real^m\), the equation
+          \(A\vec{x}=\vec{b}\) has a solution.
+        </li>
+        <li>Each \(\vec{b}\in\real^m\) is a linear combination
+          of the columns of \(A\) .
+        </li>
+        <li>The columns of \(A\) span \(\real^m\).</li>
+        <li>\(A\) has a pivot position in each row.</li>
+      </ul>
+
+      <h3>The Row-Column Rule for Calculating \(A\vec{x} = \vec{b}\)</h3>
+      <p>Let \(A\) be an \(m\) x \(n\) matrix and let \(\vec{x}\) be an
+      \(n\) x \(1\) column vector. Then the \(i\)-th entry in \(A\vec{x}\)
+      is the sum of the products of the corresponding entries in row \(i\)
+      of \(A\) and the entries in \(\vec{x}\) . That is,
+      \[A\vec{x} = \begin{vmatrix}a_{11}& a_{12}& \dots& a_{1n}\\
+      a_{21}& a_{22}& \dots& a_{2n}\\ \vdots& \vdots& \ddots& \vdots\\
+      a_{m1}& a_{m2}& \dots& a_{mn}\end{vmatrix}
+      \begin{vmatrix}x_1\\x_2\\ \vdots\\ x_n\end{vmatrix}
+      = \begin{vmatrix}a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n\\
+      a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n\\
+      \vdots\\a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n\end{vmatrix}\]
+      In other words, the \(i\)-th entry of \(A\vec{x}\)
+      is obtained by taking the dot product of the \(i\)-th "row vector"
+      of \(A\) and \(\vec{x}\) .
+      </p>
+
+      <h3>Properties of the Product \(A\vec{x}\)</h3>
+      If \(A\) is an \(m\) x \(n\) matrix, and if
+      \(\vec{u}\) and \(vec{v}\) are vectors in \(\real^n\),
+      and \(c\) is a scalar, then:
+      <ol>
+        <li>\(\ \ \ A\ (\vec{u} + \vec{v}) = A\vec{u}+A\vec{v}\)</li>
+        <li>\(\ \ \ A\ (c\vec{u}) = c\ (A\vec{u})\)</li>
+      </ol>
+
+    </section>
+
+
+     <nav>
+      <p>
+        [<a href="ch1.3.html">Prev</a>]
+        [<a href="intro.html">Contents</a>]
+        [<a href="../../index.html">Home</a>]
+        [<a href="ch1.5.html">Next</a>]
+      </p>
+    </nav>
+  </main>
+</body>
+</html>
